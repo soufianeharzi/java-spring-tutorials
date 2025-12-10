@@ -149,4 +149,5 @@ See [`docs/testing.md`](docs/testing.md) for a detailed breakdown of how the tes
 
 ### Test output
 
-<!-- Add screenshot of passing tests here -->
+<img width="1658" height="937" alt="Screenshot 2025-12-10 at 3 04 09 PM" src="https://github.com/user-attachments/assets/c4182b3b-172a-434a-8977-2244fb700084" />
+
