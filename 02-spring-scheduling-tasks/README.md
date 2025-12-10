@@ -1,5 +1,7 @@
 # Spring Scheduling Tasks
 
+> Part of the [`java-tutorials-spring`](../) collection of Spring.io guide implementations.
+
 A Spring Boot application that demonstrates scheduled task execution using the `@Scheduled` annotation. The app prints the current time to the console every 5 seconds.
 
 Based on the official [Spring Scheduling Tasks Guide](https://spring.io/guides/gs/scheduling-tasks).
@@ -7,7 +9,7 @@ Based on the official [Spring Scheduling Tasks Guide](https://spring.io/guides/g
 ## Requirements
 
 - Java 17 or later
-- Maven (or the included Maven wrapper)
+- Maven (or the included Maven wrapper `mvnw`)
 
 ## Quick start
 
