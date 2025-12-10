@@ -115,13 +115,19 @@ await().atMost(Durations.TEN_SECONDS).untilAsserted(() -> {
    - `tasks` is the spy
    - `atLeast(2)` means "called two or more times"
    - `reportCurrentTime()` is the method you expect to be called
+  
 
+## Running tests
+
+```bash
+./mvnw test
+```
 
 ## Test output
 
-<img width="1658" height="937" alt="Screenshot 2025-12-10 at 3 04 09 PM" src="https://github.com/user-attachments/assets/c4182b3b-172a-434a-8977-2244fb700084" />
+Example `./mvnw test` run with all tests passing:
 
-
+<img width="1658" height="937" alt="Screenshot 2025-12-10 at 3 04 09 PM" src="https://github.com/user-attachments/assets/c4182b3b-172a-434a-8977-2244fb700084" />
 
 
 ## Summary
