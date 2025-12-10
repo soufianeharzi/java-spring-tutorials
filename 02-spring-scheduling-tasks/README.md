@@ -11,6 +11,8 @@ Based on the official [Spring Scheduling Tasks Guide](https://spring.io/guides/g
 
 ## Quick start
 
+From the project root:
+
 ```bash
 ./mvnw spring-boot:run
 ```
@@ -23,9 +25,16 @@ INFO  ... The time is now 12:35:01
 INFO  ... The time is now 12:35:06
 ```
 
+For more run options, see [Running](#running).
+
+## Example console output
+
+<img width="1221" height="551" alt="Screenshot 2025-12-10 at 2 14 13 PM" src="https://github.com/user-attachments/assets/9ea3f3ab-42ba-4ce7-9b5f-d5f390cfc690" />
+
+
 ## Project structure
 
-```
+```text
 02-spring-scheduling-tasks/
 ├── pom.xml                          # Maven build configuration
 ├── mvnw, mvnw.cmd                   # Maven wrapper scripts
