@@ -85,7 +85,7 @@ import org.slf4j.LoggerFactory;
 private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 ```
 
----
+
 
 ## Version A vs Version B
 
@@ -111,7 +111,7 @@ private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 Both create a logger and can print messages, but Version B integrates with Spring Boot's
 logging system.
 
----
+
 
 ## What Spring Boot gives you "for free" with SLF4J (Version B)
 
@@ -147,7 +147,7 @@ org.slf4j.Logger + LoggerFactory.getLogger(...)
 
 Spring Boot wires SLF4J to Logback for you.
 
----
+
 
 ## If You Use java.util.logging Directly (Version A)
 
@@ -210,7 +210,6 @@ Then:
 
    This is already more work than just using SLF4J from the start.
 
----
 
 ## Takeaway
 
