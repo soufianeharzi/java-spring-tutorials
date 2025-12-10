@@ -45,6 +45,13 @@ Then open your browser to:
 http://localhost:8080/greeting
 http://localhost:8080/greeting?name=YourName
 ```
+## Example: /greeting
+<img width="1016" height="672" alt="Screenshot 2025-12-10 at 12 10 28 PM" src="https://github.com/user-attachments/assets/5d97dc2f-3c4d-47a9-ba05-9a0c2386d864" />
+
+##  Example: /greeting?name=Justin
+<img width="1004" height="605" alt="Screenshot 2025-12-10 at 12 10 51 PM" src="https://github.com/user-attachments/assets/4f5ac579-230a-4257-9f79-5d9a7ad7eb77" />
+
+
 
 ## Documentation
 
