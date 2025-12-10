@@ -23,7 +23,7 @@ public class ScheduledTasks {
 - Spring will create an instance of `ScheduledTasks` and manage it in the application context.
 - Needed so Spring can find and run the scheduled method.
 
-## Logger Field
+## Logger field
 
 ```java
 private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
@@ -33,7 +33,7 @@ private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 - `log.info(...)` writes an informational log message.
 - Logging is preferred over `System.out.println` in Spring apps.
 
-## Date Format Field
+## Date format field
 
 ```java
 private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
@@ -69,6 +69,9 @@ log.info("The time is now {}", dateFormat.format(new Date()));
 ---
 
 ## Why SLF4J?
+
+> In short: both versions can log, but SLF4J is the one Spring Boot is built around,
+> so it needs less setup and works better with `application.properties`.
 
 - SLF4J is a logging facade (a common logging API) used by Spring Boot.
 - Your code logs through SLF4J, and Spring Boot plugs in a real logger behind it
@@ -110,7 +113,7 @@ logging system.
 
 ---
 
-## What Spring Boot Gives You "For Free" with SLF4J (Version B)
+## What Spring Boot gives you "for free" with SLF4J (Version B)
 
 When you use SLF4J with Spring Boot, you can control logging with simple properties,
 no extra Java code.
