@@ -113,10 +113,10 @@ public void reportCurrentTime() {
 
 ### Scheduling options
 
-- `fixedRate`     run at fixed intervals from the start of each invocation
-- `fixedDelay`    run at fixed intervals from the end of each invocation
-- `cron`          use cron expressions for complex schedules
-- `initialDelay`  delay before the first execution
+- `fixedRate`     run at fixed intervals from the start of each invocation.
+- `fixedDelay`    run at fixed intervals from the end of each invocation.
+- `cron`          use cron expressions for complex schedules.
+- `initialDelay`  delay before the first execution.
 
 ## Running
 
