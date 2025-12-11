@@ -19,7 +19,7 @@ Based on [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guide
 ├── src/test/java/com/example/consumingrest/
 │   └── ConsumingRestApplicationTests.java  # Spring context test
 └── docs/
-    ├── knowledge-summary.md             # My personal knowledge summary
+    ├── DEVELOPER_NOTES.md               # My developer notes
     ├── setup/
     │   ├── spring-initializr.md         # Project setup from start.spring.io
     │   └── run-instructions.md          # Detailed run steps
@@ -82,11 +82,9 @@ curl http://localhost:8081/quote
 }
 ```
 
-## Terminal output from `curl http://localhost:8081/quote`:
+## Terminal output from `curl http://localhost:8081/quote`
 
 <img width="804" height="221" alt="Screenshot 2025-12-11 at 1 01 22 AM" src="https://github.com/user-attachments/assets/30c16f4e-c1aa-478c-9521-f31a7374353b" />
-
-
 
 ## Ports
 
@@ -108,7 +106,7 @@ curl http://localhost:8081/quote
 
 | File                                                                     | Explains                                |
 |--------------------------------------------------------------------------|-----------------------------------------|
-| [knowledge-summary.md](docs/knowledge-summary.md)                        | My personal knowledge summary           |
+| [DEVELOPER_NOTES.md](docs/DEVELOPER_NOTES.md)                            | My developer notes                      |
 | [setup/spring-initializr.md](docs/setup/spring-initializr.md)            | Project setup from start.spring.io      |
 | [setup/run-instructions.md](docs/setup/run-instructions.md)              | Detailed run steps                      |
 | [concepts/quote-controller.md](docs/concepts/quote-controller.md)        | How RestClient and the controller work  |

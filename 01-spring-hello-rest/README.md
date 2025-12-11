@@ -2,7 +2,6 @@
 
 > Part of the [`java-tutorials-spring`](../) collection of Spring.io guide implementations.
 
-
 A simple Spring Boot application that demonstrates how to build a RESTful web
 service.
 
@@ -64,7 +63,6 @@ http://localhost:8080/greeting?name=YourName
 ## Example: `/greeting?name=Justin`
 
 <img width="1004" height="605" alt="Screenshot 2025-12-10 at 12 10 51 PM" src="https://github.com/user-attachments/assets/4f5ac579-230a-4257-9f79-5d9a7ad7eb77" />
-
 
 ## Documentation
 

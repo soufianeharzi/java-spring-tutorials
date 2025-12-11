@@ -15,7 +15,7 @@ A simple Spring Boot REST API that serves quotes. This service is the backend fo
 ├── src/main/resources/
 │   └── application.properties
 └── docs/
-    ├── knowledge-summary.md             # My personal knowledge summary
+    ├── DEVELOPER_NOTES.md               # My developer notes
     ├── setup/
     │   └── spring-initializr.md         # Project setup from start.spring.io
     ├── concepts/
@@ -45,10 +45,9 @@ A simple Spring Boot REST API that serves quotes. This service is the backend fo
 }
 ```
 
-## Terminal output from `curl http://localhost:8080/api/random`:
+## Terminal output from `curl http://localhost:8080/api/random`
 
 <img width="658" height="214" alt="Screenshot 2025-12-11 at 12 45 55 AM" src="https://github.com/user-attachments/assets/4d1b895f-41cf-4a19-8ea9-573472a39883" />
-
 
 ## Run
 

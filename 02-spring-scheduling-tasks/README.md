@@ -34,7 +34,6 @@ For more run options, see [Running](#running).
 
 <img width="1221" height="551" alt="Screenshot 2025-12-10 at 2 14 13 PM" src="https://github.com/user-attachments/assets/9ea3f3ab-42ba-4ce7-9b5f-d5f390cfc690" />
 
-
 ## Project structure
 
 ```text
@@ -118,10 +117,10 @@ public void reportCurrentTime() {
 
 ### Scheduling options
 
-- `fixedRate`     run at fixed intervals from the start of each invocation.
-- `fixedDelay`    run at fixed intervals from the end of each invocation.
-- `cron`          use cron expressions for complex schedules.
-- `initialDelay`  delay before the first execution.
+- `fixedRate` - Run at fixed intervals from the start of each invocation.
+- `fixedDelay` - Run at fixed intervals from the end of each invocation.
+- `cron` - Use cron expressions for complex schedules.
+- `initialDelay` - Delay before the first execution.
 
 ## Running
 
