@@ -24,14 +24,27 @@ From a module folder, for example `01-spring-hello-rest`:
 ./mvnw spring-boot:run
 ```
 
-## Module layout
+  ## Module layout
 
-Each module contains:
-- `spring-initializr.md` - Spring Initializr configuration used to create the project.
-- `README.md` and notes - short explanations of key annotations and classes.
-- Source code under `src/main/java/`.
+  Each module contains:
+  
+```
+  module-name/
+  ├── src/main/java/              # Source code
+  ├── src/test/java/              # Tests (where applicable)
+  ├── docs/
+  │   ├── setup/                  # How to create and run the project
+  │   ├── concepts/               # Explanations of key classes and patterns
+  │   └── reference/              # Original Spring guide (where applicable)
+  ├── pom.xml                     # Maven configuration
+  └── README.md                   # Overview, quick start, and documentation index
+```
+  The 03 modules also include:
+  
+  - `docs/knowledge-summary.md` - Personal notes and takeaways
+  - `docs/adr/`                 - Architecture Decision Records documenting design choices
 
-## Future work
+
 
 Custom implementations and extensions will be added over time.
 This repository is meant to walk through the Spring Boot tutorials and documentation in a structured way.
