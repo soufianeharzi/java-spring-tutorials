@@ -2,6 +2,26 @@
 
 A simple Spring Boot REST API that serves quotes. This service is the backend for the [03-consuming-rest](../03-spring-consuming-rest) tutorial.
 
+## File Index
+
+```
+03-quote-service/
+├── pom.xml
+├── src/main/java/com/example/quoteservice/
+│   ├── QuoteServiceApplication.java    # Main entry point
+│   ├── QuoteController.java            # REST endpoints
+│   ├── Quote.java                      # Record for JSON response
+│   └── Value.java                      # Record for nested JSON object
+├── src/main/resources/
+│   └── application.properties
+└── docs/
+    ├── spring-initializr.md            # Project setup from start.spring.io
+    ├── quote-controller.md             # Explains the controller and Java Streams
+    └── adr/
+        ├── ADR-0001-split-provider-consumer.md  # Why separate modules
+        └── ADR-0002-rest-api-shape.md           # API design decisions
+```
+
 ## Endpoints
 
 | Method | Path         | Description       |

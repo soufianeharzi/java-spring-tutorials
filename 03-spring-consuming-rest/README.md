@@ -4,6 +4,29 @@ A Spring Boot application that consumes the [quote-service](../03-quote-service)
 
 Based on [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest).
 
+## File Index
+
+```
+03-spring-consuming-rest/
+├── pom.xml
+├── src/main/java/com/example/consumingrest/
+│   ├── ConsumingRestApplication.java   # Main entry point
+│   ├── QuoteController.java            # REST endpoint, calls quote-service
+│   ├── Quote.java                      # Record for JSON response
+│   └── Value.java                      # Record for nested JSON object
+├── src/main/resources/
+│   └── application.properties          # Port config (8081)
+└── docs/
+    ├── guide.md                        # Original Spring guide (reference)
+    ├── quote-controller.md             # Explains RestClient and the controller
+    ├── java-records.md                 # Explains records and JSON mapping
+    ├── run-instructions.md             # Detailed run steps
+    ├── spring-initializr.md            # Project setup from start.spring.io
+    └── adr/
+        ├── ADR-0003-use-restclient.md  # Why RestClient
+        └── ADR-0004-expose-quote-endpoint.md  # Why REST endpoint
+```
+
 ## How It Works
 
 This consumer exposes a `/quote` endpoint that fetches a random quote from the quote-service:
@@ -65,10 +88,10 @@ curl http://localhost:8081/quote
 
 ## Documentation
 
-| File                                                 | Explains                                            |
-|------------------------------------------------------|-----------------------------------------------------|
-| [docs/quote-controller.md](docs/quote-controller.md) | How RestClient and the controller work              |
-| [docs/java-records.md](docs/java-records.md)         | What records are and how JSON mapping works         |
+| File                                                 | Explains                                              |
+|------------------------------------------------------|-------------------------------------------------------|
+| [docs/quote-controller.md](docs/quote-controller.md) | How RestClient and the controller work                |
+| [docs/java-records.md](docs/java-records.md)         | What records are and how JSON mapping works           |
 | [docs/run-instructions.md](docs/run-instructions.md) | Detailed run steps (expanded version of this section) |
 
 ## ADRs
