@@ -17,6 +17,7 @@ Based on [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guide
 ├── src/main/resources/
 │   └── application.properties          # Port config (8081)
 └── docs/
+    ├── summary.md                      # Personal summary of all files
     ├── guide.md                        # Original Spring guide (reference)
     ├── quote-controller.md             # Explains RestClient and the controller
     ├── java-records.md                 # Explains records and JSON mapping
@@ -102,6 +103,7 @@ curl http://localhost:8081/quote
 
 | File                                                 | Explains                                              |
 |------------------------------------------------------|-------------------------------------------------------|
+| [docs/summary.md](docs/summary.md)                   | Personal summary of all files in this project         |
 | [docs/quote-controller.md](docs/quote-controller.md) | How RestClient and the controller work                |
 | [docs/java-records.md](docs/java-records.md)         | What records are and how JSON mapping works           |
 | [docs/run-instructions.md](docs/run-instructions.md) | Detailed run steps (expanded version of this section) |
