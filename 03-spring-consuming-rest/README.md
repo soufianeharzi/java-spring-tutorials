@@ -76,7 +76,7 @@ curl http://localhost:8081/quote
 }
 ```
 
-**Terminal output from `curl http://localhost:8081/quote`:**
+## Terminal output from `curl http://localhost:8081/quote`:
 
 <img width="804" height="221" alt="Screenshot 2025-12-11 at 1 01 22 AM" src="https://github.com/user-attachments/assets/30c16f4e-c1aa-478c-9521-f31a7374353b" />
 
