@@ -1,9 +1,14 @@
-
 # java-tutorials-spring
 
 This repository contains hands-on implementations of the official
-[Spring.io guides](https://spring.io/guides), along with my own notes and explanations.
+[Spring Guides](https://spring.io/guides), along with my detailed architecual breakdowns with easy to undertand explasnations of why "whats going on" and the "why" beghind the cdoe
 Each subfolder is a small, focused project generated with Spring Initializr.
+
+
+## Currently
+
+Spring guide implementations with structured documentation, developer notes, and ADRs.  
+Covers REST services, scheduling, and REST client patterns.
 
 ## Contents
 
@@ -41,10 +46,10 @@ From a module folder, for example `01-spring-hello-rest`:
 ```
   The 03 modules also include:
   
-  - `docs/DEVELOPER_NOTES.md`   - Personal notes and takeaways
-  - `docs/adr/`                 - Architecture Decision Records documenting design choices
+  - `docs/DEVELOPER_NOTES.md`   - Personal notes and detailed 
+  - `docs/adr/`                 - Architecture Decision Records documenting the "why" in each design choices
 
 
 
 Custom implementations and extensions will be added over time.
-This repository is meant to walk through the Spring Boot tutorials and documentation in a structured way.
+This repository is meant to walk through the Spring Boot tutorials, learn best spring practices, and document it all a structured way for reuse.
