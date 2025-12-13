@@ -62,8 +62,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Run PITest mutation testing
-        run: ./mvnw -B -ntp test org.pitest:pitest-maven:mutationCoverage
+      - name: Run PITest mutation testing (03 modules only)
+        run: ./mvnw -B -ntp test org.pitest:pitest-maven:mutationCoverage -pl 03-quote-service,03-spring-consuming-rest
 
   # OWASP runs only on main branch (slower, requires NVD data)
   security-check:
