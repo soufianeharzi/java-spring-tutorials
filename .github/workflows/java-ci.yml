@@ -194,6 +194,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nvd-
 
+      - name: Verify OSS Index secrets
+        run: |
+          if [ -z "${{ secrets.OSS_INDEX_USERNAME }}" ]; then
+            echo "WARNING: OSS_INDEX_USERNAME secret is empty or not set"
+          else
+            echo "OSS_INDEX_USERNAME is set (length: ${#OSS_USER})"
+          fi
+          if [ -z "${{ secrets.OSS_INDEX_TOKEN }}" ]; then
+            echo "WARNING: OSS_INDEX_TOKEN secret is empty or not set"
+          else
+            echo "OSS_INDEX_TOKEN is set"
+          fi
+        env:
+          OSS_USER: ${{ secrets.OSS_INDEX_USERNAME }}
+
       - name: Run OWASP Dependency-Check
         run: |
           ./mvnw -B -ntp org.owasp:dependency-check-maven:aggregate \
