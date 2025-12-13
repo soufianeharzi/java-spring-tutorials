@@ -210,10 +210,10 @@ jobs:
           OSS_USER: ${{ secrets.OSS_INDEX_USERNAME }}
 
       - name: Run OWASP Dependency-Check
-        run: |
-          ./mvnw -B -ntp org.owasp:dependency-check-maven:aggregate \
-            -DossindexAnalyzerUsername='${{ secrets.OSS_INDEX_USERNAME }}' \
-            -DossindexAnalyzerPassword='${{ secrets.OSS_INDEX_TOKEN }}'
+        env:
+          OSS_USER: ${{ secrets.OSS_INDEX_USERNAME }}
+          OSS_PASS: ${{ secrets.OSS_INDEX_TOKEN }}
+        run: ./mvnw -B -ntp org.owasp:dependency-check-maven:aggregate -DossindexAnalyzerUsername="$OSS_USER" -DossindexAnalyzerPassword="$OSS_PASS"
 
       - name: Generate Security Summary
         if: always()
