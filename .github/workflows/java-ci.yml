@@ -56,23 +56,30 @@ jobs:
           echo "| 03-spring-consuming-rest | REST client with RestClient | 4.0.0 |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          echo "### Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "### Test Results by Module" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Module | Tests | Passed | Failed | Skipped |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|--------|--------|---------|" >> $GITHUB_STEP_SUMMARY
 
-          # Extract test results per module from build output
+          # Parse test results for each module
           for module in "rest_service" "scheduling-tasks" "quote-service" "consuming-rest"; do
-            if grep -q "Tests run:.*in com.example" build-output.log; then
-              tests=$(grep -A5 "Building $module" build-output.log | grep "Tests run:" | tail -1 || echo "")
-              if [ -n "$tests" ]; then
-                echo "- **$module**: $tests" >> $GITHUB_STEP_SUMMARY
-              fi
+            # Find test line for this module's test class
+            test_line=$(grep "Tests run:.*in com.example" build-output.log | grep -i "${module//-/}" | head -1 || echo "")
+            if [ -n "$test_line" ]; then
+              run=$(echo "$test_line" | grep -oE "Tests run: [0-9]+" | grep -oE "[0-9]+" || echo "0")
+              fail=$(echo "$test_line" | grep -oE "Failures: [0-9]+" | grep -oE "[0-9]+" || echo "0")
+              skip=$(echo "$test_line" | grep -oE "Skipped: [0-9]+" | grep -oE "[0-9]+" || echo "0")
+              pass=$((run - fail))
+              echo "| $module | $run | $pass | $fail | $skip |" >> $GITHUB_STEP_SUMMARY
             fi
           done
 
-          # Overall test summary
-          total_tests=$(grep -E "Tests run: [0-9]+" build-output.log | tail -1 || echo "See logs for details")
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Overall**: $total_tests" >> $GITHUB_STEP_SUMMARY
+
+          # Total tests
+          total_run=$(grep "Tests run:" build-output.log | grep -oE "Tests run: [0-9]+" | grep -oE "[0-9]+" | awk '{s+=$1} END {print s}')
+          total_fail=$(grep "Failures:" build-output.log | grep -oE "Failures: [0-9]+" | grep -oE "[0-9]+" | awk '{s+=$1} END {print s}')
+          echo "**Total: ${total_run:-0} tests, ${total_fail:-0} failures**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           echo "### Quality Gates" >> $GITHUB_STEP_SUMMARY
@@ -116,39 +123,37 @@ jobs:
         run: |
           echo "## Mutation Testing Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "PITest mutation testing validates test quality by introducing code mutations" >> $GITHUB_STEP_SUMMARY
-          echo "and verifying tests detect them." >> $GITHUB_STEP_SUMMARY
+          echo "PITest mutation testing validates test quality by introducing code mutations and verifying tests detect them." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           echo "### Results by Module" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Module | Mutations | Killed | Coverage |" >> $GITHUB_STEP_SUMMARY
-          echo "|--------|-----------|--------|----------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Module | Line Coverage | Mutations | Killed | Mutation Score |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|---------------|-----------|--------|----------------|" >> $GITHUB_STEP_SUMMARY
 
-          # Extract mutation stats for quote-service
-          if grep -q "quote-service" pitest-output.log; then
-            qs_stats=$(grep -A50 "Building quote-service" pitest-output.log | grep "Generated.*mutations Killed" | head -1 || echo "")
-            if [ -n "$qs_stats" ]; then
-              generated=$(echo "$qs_stats" | grep -oE "Generated [0-9]+" | grep -oE "[0-9]+")
-              killed=$(echo "$qs_stats" | grep -oE "Killed [0-9]+" | grep -oE "[0-9]+")
-              if [ -n "$generated" ] && [ -n "$killed" ]; then
-                pct=$((killed * 100 / generated))
-                echo "| 03-quote-service | $generated | $killed | ${pct}% |" >> $GITHUB_STEP_SUMMARY
-              fi
-            fi
+          # Extract stats for quote-service (look for the statistics line)
+          qs_line=$(grep -A2 "Building quote-service" pitest-output.log | head -1 || echo "")
+          qs_stats=$(sed -n '/Building quote-service/,/BUILD SUCCESS\|Building consuming-rest/p' pitest-output.log | grep "Generated.*mutations Killed" | tail -1 || echo "")
+          qs_coverage=$(sed -n '/Building quote-service/,/BUILD SUCCESS\|Building consuming-rest/p' pitest-output.log | grep "Line Coverage" | tail -1 || echo "")
+
+          if [ -n "$qs_stats" ]; then
+            generated=$(echo "$qs_stats" | grep -oE "Generated [0-9]+" | grep -oE "[0-9]+" || echo "0")
+            killed=$(echo "$qs_stats" | grep -oE "Killed [0-9]+" | grep -oE "[0-9]+" || echo "0")
+            pct=$(echo "$qs_stats" | grep -oE "\([0-9]+%\)" | grep -oE "[0-9]+" || echo "0")
+            line_cov=$(echo "$qs_coverage" | grep -oE "[0-9]+/[0-9]+ \([0-9]+%\)" || echo "N/A")
+            echo "| 03-quote-service | $line_cov | $generated | $killed | ${pct}% |" >> $GITHUB_STEP_SUMMARY
           fi
 
-          # Extract mutation stats for consuming-rest
-          if grep -q "consuming-rest" pitest-output.log; then
-            cr_stats=$(grep -A50 "Building consuming-rest" pitest-output.log | grep "Generated.*mutations Killed" | head -1 || echo "")
-            if [ -n "$cr_stats" ]; then
-              generated=$(echo "$cr_stats" | grep -oE "Generated [0-9]+" | grep -oE "[0-9]+")
-              killed=$(echo "$cr_stats" | grep -oE "Killed [0-9]+" | grep -oE "[0-9]+")
-              if [ -n "$generated" ] && [ -n "$killed" ]; then
-                pct=$((killed * 100 / generated))
-                echo "| 03-spring-consuming-rest | $generated | $killed | ${pct}% |" >> $GITHUB_STEP_SUMMARY
-              fi
-            fi
+          # Extract stats for consuming-rest
+          cr_stats=$(sed -n '/Building consuming-rest/,/BUILD SUCCESS/p' pitest-output.log | grep "Generated.*mutations Killed" | tail -1 || echo "")
+          cr_coverage=$(sed -n '/Building consuming-rest/,/BUILD SUCCESS/p' pitest-output.log | grep "Line Coverage" | tail -1 || echo "")
+
+          if [ -n "$cr_stats" ]; then
+            generated=$(echo "$cr_stats" | grep -oE "Generated [0-9]+" | grep -oE "[0-9]+" || echo "0")
+            killed=$(echo "$cr_stats" | grep -oE "Killed [0-9]+" | grep -oE "[0-9]+" || echo "0")
+            pct=$(echo "$cr_stats" | grep -oE "\([0-9]+%\)" | grep -oE "[0-9]+" || echo "0")
+            line_cov=$(echo "$cr_coverage" | grep -oE "[0-9]+/[0-9]+ \([0-9]+%\)" || echo "N/A")
+            echo "| 03-consuming-rest | $line_cov | $generated | $killed | ${pct}% |" >> $GITHUB_STEP_SUMMARY
           fi
 
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -156,7 +161,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Metric | Required | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|--------|----------|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Mutation Coverage | >=70% | Passed |" >> $GITHUB_STEP_SUMMARY
+          echo "| Mutation Score | >=70% | Passed |" >> $GITHUB_STEP_SUMMARY
           echo "| Line Coverage | >=75% | Passed |" >> $GITHUB_STEP_SUMMARY
 
   # OWASP runs only on main branch (slower, requires NVD data)
