@@ -116,7 +116,7 @@
 					<dependency>
 						<groupId>org.pitest</groupId>
 						<artifactId>pitest-junit5-plugin</artifactId>
-						<version>1.2.1</version>
+						<version>1.2.3</version>
 					</dependency>
 					<!-- Use JUnit 6 platform launcher to match Spring Boot 4.0.0 -->
 					<dependency>
@@ -140,7 +140,7 @@
 			<plugin>
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
-				<version>12.1.0</version>
+				<version>12.1.9</version>
 				<configuration>
 					<failBuildOnCVSS>7</failBuildOnCVSS>
 				</configuration>

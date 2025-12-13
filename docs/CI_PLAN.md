@@ -31,10 +31,10 @@ Managed in parent `pom.xml`:
 |------|---------|
 | JaCoCo | 0.8.14 |
 | PITest | 1.22.0 |
-| pitest-junit5-plugin | 1.2.1 |
+| pitest-junit5-plugin | 1.2.3 |
 | SpotBugs | 4.9.8.2 |
 | Checkstyle | 3.6.0 |
-| OWASP Dependency-Check | 12.1.0 |
+| OWASP Dependency-Check | 12.1.9 |
 
 ## Running Locally
 
