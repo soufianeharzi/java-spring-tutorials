@@ -1,8 +1,7 @@
 # ADR-0002: REST API Shape
 
-## Status
-
-Accepted
+Status: Accepted
+Date: 2025-12-13
 
 ## Context
 

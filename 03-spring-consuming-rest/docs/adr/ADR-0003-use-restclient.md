@@ -1,8 +1,7 @@
 # ADR-0003: Use RestClient Instead of RestTemplate
 
-## Status
-
-Accepted
+Status: Accepted
+Date: 2025-12-13
 
 ## Context
 

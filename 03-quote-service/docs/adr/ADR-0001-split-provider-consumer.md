@@ -1,8 +1,7 @@
 # ADR-0001: Split Provider and Consumer into Separate Modules
 
-## Status
-
-Accepted
+Status: Accepted
+Date: 2025-12-13
 
 ## Context
 

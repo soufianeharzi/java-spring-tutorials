@@ -1,8 +1,7 @@
 # ADR-0001: Use Shields.io Endpoint Badges
 
-## Status
-
-Accepted
+Status: Accepted
+Date: 2025-12-13
 
 ## Context
 
