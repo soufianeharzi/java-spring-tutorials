@@ -116,7 +116,7 @@ curl http://localhost:8081/quote
 | [setup/spring-initializr.md](docs/setup/spring-initializr.md)     | Project setup from start.spring.io          |
 | [setup/run-instructions.md](docs/setup/run-instructions.md)       | Detailed run steps                          |
 | [concepts/quote-controller.md](docs/concepts/quote-controller.md) | How RestClient and the controller work      |
-| [concepts/java-records.md](docs/concepts/javarecords.md)          | What records are and how JSON mapping works |
+| [concepts/java-records.md](docs/concepts/java-records.md)          | What records are and how JSON mapping works |
 | [reference/guide.md](docs/reference/guide.md)                     | Original Spring guide                       |
 
 ## ADRs

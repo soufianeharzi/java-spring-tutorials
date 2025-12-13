@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-The original Spring guide "Consuming a RESTful Web Service" uses `RestTemplate` to call the quote service. However, Spring Boot 3.2+ introduces `RestClient` as the modern alternative for synchronous HTTP calls.
+The original Spring guide "Consuming a RESTful Web Service" uses `RestTemplate` to call the quote service. However, `RestClient` was introduced in Spring Boot 3.2 as the modern alternative for synchronous HTTP calls and is fully supported in Spring Boot 4.0.0 (which this project uses).
 
 We need to decide which HTTP client to use for this tutorial.
 
@@ -14,7 +14,7 @@ We need to decide which HTTP client to use for this tutorial.
 
 Use `RestClient` instead of `RestTemplate`.
 
-Spring Boot 3.x recommends RestClient (or WebClient for reactive) as the modern alternative to RestTemplate for blocking REST calls. RestTemplate is now in maintenance mode.
+`RestClient` is the recommended approach for synchronous REST calls in Spring Boot 4.x. RestTemplate is now in maintenance mode and will not receive new features.
 
 Key advantages of RestClient:
 - Fluent API similar to WebClient
@@ -33,7 +33,6 @@ Key advantages of RestClient:
 **Harder:**
 
 - Code differs from the original Spring guide (which uses RestTemplate)
-- Requires Spring Boot 3.2+ (not an issue for this project)
 
 ## References
 

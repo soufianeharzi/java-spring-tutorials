@@ -410,21 +410,47 @@ public record Value(Long id, String quote) { }
 
 ### [QuoteController.java](../src/main/java/com/example/consumingrest/QuoteController.java)
 
-TODO: Explain the controller
+REST controller that consumes the quote-service API and exposes `/quote` endpoint.
 
-**Key concepts to cover:**
-- `@RestController`
-- `@GetMapping`
-- `RestClient` (Spring Boot 3.2+)
-- Constructor injection with `@Value` for externalized config
-- `.get().uri().retrieve().body()`
-- Error handling with `RestClientException` and fallback response
+**Key annotations:**
+- `@RestController` - makes this a REST endpoint that returns JSON
+- `@GetMapping("/quote")` - maps GET requests to the handler method
+- `@Value("${quote.service.base-url}")` - injects property from application.properties
+
+**RestClient usage (Spring Boot 3.2+):**
+```java
+this.restClient = builder.baseUrl(baseUrl).build();
+
+// In the handler method:
+return restClient
+    .get().uri("/api/random")
+    .retrieve()
+    .body(Quote.class);
+```
+
+The fluent API:
+1. `.get()` - HTTP GET request
+2. `.uri("/api/random")` - appended to base URL
+3. `.retrieve()` - executes the request
+4. `.body(Quote.class)` - deserializes JSON to Quote record
+
+**Error handling:**
+```java
+try {
+    return restClient.get()...;
+} catch (RestClientException e) {
+    log.error("Failed to fetch quote", e);
+    return new Quote("error", new Value(-1L, "Quote service unavailable"));
+}
+```
+Returns a fallback response instead of crashing when quote-service is down.
+See [ADR-0005](adr/ADR-0005-error-handling-fallback.md) for rationale.
 
 ---
 
 ### [ConsumingRestApplication.java](../src/main/java/com/example/consumingrest/ConsumingRestApplication.java)
 
-TODO: Explain the main application class
+Standard Spring Boot entry point. Nothing special here.
 
 ```java
 @SpringBootApplication
@@ -434,20 +460,49 @@ public class ConsumingRestApplication {
     }
 }
 ```
-here 
+
+**What `@SpringBootApplication` does:**
+- `@Configuration` - marks class as bean definition source
+- `@EnableAutoConfiguration` - enables Spring Boot auto-config (including RestClient.Builder bean)
+- `@ComponentScan` - scans current package for `@Component`, `@RestController`, etc.
+
 ---
 
 ### [application.properties](../src/main/resources/application.properties)
 
-TODO: Explain the configuration
+Configuration for this module.
 
 ```properties
 server.port=8081
 quote.service.base-url=http://localhost:8080
 ```
 
+| Property | Purpose |
+|----------|---------|
+| `server.port=8081` | Avoids conflict with quote-service (which uses 8080) |
+| `quote.service.base-url` | Externalized backend URL for RestClient |
+
+**Why externalize the URL?**
+- Easy to change without code modifications
+- Different values for dev/test/prod environments
+- Can override via command line: `-Dquote.service.base-url=http://prod:8080`
+- See [ADR-0006](adr/ADR-0006-externalize-base-url.md) for rationale
+
 ---
 
-### [ConsumingRestApplicationTests.java](../src/test/java/com/example/consumingrest/ConsumingRestApplicationTests.java)
+### [QuoteControllerTest.java](../src/test/java/com/example/consumingrest/QuoteControllerTest.java)
 
-TODO: Explain the test class
+Tests the QuoteController using `@RestClientTest` to mock the RestClient.
+
+```java
+@RestClientTest(QuoteController.class)
+class QuoteControllerTest {
+    @Autowired MockRestServiceServer server;
+    @Autowired QuoteController controller;
+}
+```
+
+**Key testing patterns:**
+- `MockRestServiceServer` - mocks HTTP responses without real network calls
+- `server.expect()` - sets up expected requests and canned responses
+- Tests both happy path (backend returns quote) and error path (backend unavailable)
