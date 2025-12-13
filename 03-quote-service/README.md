@@ -12,6 +12,8 @@ A simple Spring Boot REST API that serves quotes. This service is the backend fo
 │   ├── QuoteController.java            # REST endpoints
 │   ├── Quote.java                      # Record for JSON response
 │   └── Value.java                      # Record for nested JSON object
+├── src/test/java/com/example/quoteservice/
+│   └── QuoteControllerTest.java        # Endpoint tests
 ├── src/main/resources/
 │   └── application.properties
 └── docs/
@@ -23,7 +25,8 @@ A simple Spring Boot REST API that serves quotes. This service is the backend fo
     │   └── quote-controller.md          # Explains the controller and Java Streams
     └── adr/
         ├── ADR-0001-split-provider-consumer.md  # Why separate modules
-        └── ADR-0002-rest-api-shape.md           # API design decisions
+        ├── ADR-0002-rest-api-shape.md           # API design decisions
+        └── ADR-0003-use-threadlocalrandom.md    # Why ThreadLocalRandom
 ```
 
 ## Endpoints
@@ -65,6 +68,14 @@ curl http://localhost:8080/api/random
 curl http://localhost:8080/api/
 curl http://localhost:8080/api/1
 ```
+
+## Run Tests
+
+```bash
+./mvnw test
+```
+
+Tests cover all three endpoints and verify correct JSON responses.
 
 ## Related
 

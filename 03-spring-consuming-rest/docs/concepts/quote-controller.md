@@ -34,20 +34,24 @@ private final RestClient restClient;
 ## Constructor injection
 
 ```java
-public QuoteController(RestClient.Builder builder) {
-    this.restClient = builder.baseUrl("http://localhost:8080").build();
+public QuoteController(RestClient.Builder builder,
+                       @Value("${quote.service.base-url}") String baseUrl) {
+    this.restClient = builder.baseUrl(baseUrl).build();
 }
 ```
 
 **What this does:**
-- Spring sees that `QuoteController` needs a `RestClient.Builder`.
-- Spring automatically provides one (this is called "dependency injection").
-- We configure it with a base URL and call `.build()` to create the `RestClient`.
+- Spring sees that `QuoteController` needs a `RestClient.Builder` and a `baseUrl` string.
+- Spring automatically provides the builder (this is called "dependency injection").
+- The `@Value("${quote.service.base-url}")` reads the URL from `application.properties`.
+- We configure the builder with that URL and call `.build()` to create the `RestClient`.
 
-**Why `http://localhost:8080`?**
-- The quote-service runs on port 8080.
-- This consumer runs on port 8081.
-- So we call `localhost:8080` to reach the quote-service.
+**Why externalize the URL?**
+- The URL used to be hardcoded as `"http://localhost:8080"`.
+- Now it comes from configuration, so we can change it without recompiling.
+- In production, you might point to a different host or port.
+
+See [ADR-0006](../adr/ADR-0006-externalize-base-url.md) for the full decision.
 
 **Why use the constructor?**
 This pattern is called "constructor injection." Benefits:
@@ -62,10 +66,15 @@ This pattern is called "constructor injection." Benefits:
 ```java
 @GetMapping("/quote")
 public Quote getQuote() {
-    return restClient
-            .get().uri("/api/random")
-            .retrieve()
-            .body(Quote.class);
+    try {
+        return restClient
+                .get().uri("/api/random")
+                .retrieve()
+                .body(Quote.class);
+    } catch (RestClientException e) {
+        log.error("Failed to fetch quote from quote-service", e);
+        return new Quote("error", new Value(-1L, "Quote service unavailable"));
+    }
 }
 ```
 
@@ -83,6 +92,20 @@ public Quote getQuote() {
 base URL      + uri path     = full URL
 localhost:8080 + /api/random  = http://localhost:8080/api/random
 ```
+
+---
+
+## Error handling
+
+If the quote-service is unavailable (network error, server down, timeout), the original code would crash with a 500 error.
+
+Now we catch `RestClientException` and return a fallback response:
+- `type` is set to `"error"` instead of `"success"`
+- `quote` says "Quote service unavailable"
+
+This keeps our service running even when the backend is down. Clients can check the `type` field to know if something went wrong.
+
+See [ADR-0005](../adr/ADR-0005-error-handling-fallback.md) for the full decision.
 
 ---
 
@@ -146,4 +169,32 @@ Spring has three HTTP clients:
 | WebClient      | When you need async/reactive code.                          |
 
 We use `RestClient` because it is the recommended choice for Spring Boot 3.2+ when making synchronous HTTP calls.
-See [ADR-0003](adr/ADR-0003-use-restclient.md) for more details on why we chose RestClient.
+See [ADR-0003](../adr/ADR-0003-use-restclient.md) for more details on why we chose RestClient.
+
+---
+
+## Configuration
+
+The base URL is set in `application.properties`:
+
+```properties
+quote.service.base-url=http://localhost:8080
+```
+
+You can override this with an environment variable:
+```bash
+QUOTE_SERVICE_BASE_URL=http://production-server:8080 ./mvnw spring-boot:run
+```
+
+---
+
+## Testing
+
+The controller has tests in `QuoteControllerTest.java` that verify both paths:
+
+| Test | What it checks |
+|------|----------------|
+| `getQuote_whenBackendAvailable_returnsQuote` | Normal case: returns quote from backend |
+| `getQuote_whenBackendUnavailable_returnsFallback` | Error case: returns fallback when backend is down |
+
+The tests use `@SpringBootTest` with `@AutoConfigureMockMvc` to test the controller, and `@AutoConfigureMockRestServiceServer` to mock the quote-service responses. This is the Spring Boot 4.0 way to test REST clients.

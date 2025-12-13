@@ -9,6 +9,7 @@
 | `QuoteController.java`      | REST endpoints, serves quotes               | Streams, `@PathVariable`         |
 | `QuoteServiceApplication.java` | Main Spring Boot application entry point | Boots the app on port 8080       |
 | `application.properties`    | Configuration                               | Default port 8080                |
+| `QuoteControllerTest.java`  | Tests for all 3 endpoints                   | `@WebMvcTest`, MockMvc           |
 
 ---
 
@@ -48,7 +49,7 @@ TODO: Explain the controller
 - `@PathVariable` - route parameters
 - `List.of()` - immutable lists
 - Java Streams (`.stream().map().toList()`)
-- `Random` class
+- `ThreadLocalRandom` (thread-safe random)
 
 ---
 

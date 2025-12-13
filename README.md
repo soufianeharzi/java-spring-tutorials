@@ -1,55 +1,110 @@
 # java-tutorials-spring
 
-This repository contains hands-on implementations of the official Spring.io guides, along with my own notes and explanations. 
+This repository contains hands-on implementations of the official [Spring Guides](https://spring.io/guides), along with detailed architectural breakdowns explaining the "what" and "why" behind the code.
+
 Each subfolder is a small, focused project generated with Spring Initializr.
 
+## Objective
 
-## Currently
+The goal of this repo is to:
+- Teach others how to use Spring Initializr effectively
+- Provide reusable templates with detailed documentation
+- Document all major components in easy-to-understand language
+- Create personal notes that can be referenced alongside Spring documentation
 
-Spring guide implementations with structured documentation, developer notes, and ADRs.  
-Covers REST services, scheduling, and REST client patterns.
+I believe in understanding over memorization. Every aspect is documented with explanations of why decisions were made.
+
+## Architecture Overview
+
+```mermaid
+flowchart LR
+    subgraph Learning Path
+        A[01-hello-rest] --> B[02-scheduling]
+        B --> C[03-quote-service]
+        C --> D[03-consuming-rest]
+    end
+    C -.->|provides API| D
+```
 
 ## Contents
 
-| Module                     | Guide link                                            | Status      | Notes                                                              |
-|----------------------------|-------------------------------------------------------|-------------|--------------------------------------------------------------------|
-| `01-spring-hello-rest`     | https://spring.io/guides/gs/rest-service/             | Implemented | Basic REST endpoint and JSON body.                                 |
-| `02-scheduling-tasks`      | https://spring.io/guides/gs/scheduling-tasks/         | Implemented | Scheduled logging every 5 seconds.                                 |
-| `03-quote-service`         | https://spring.io/guides/gs/consuming-rest/           | Implemented | Backend quote API (self-contained replacement for `quoters`).      |
-| `03-spring-consuming-rest` | https://spring.io/guides/gs/consuming-rest/           | Implemented | REST client that consumes the quote-service REST API.              |
+| Module | Guide | Status | Spring Concepts |
+|--------|-------|--------|-----------------|
+| `01-spring-hello-rest` | [REST Service](https://spring.io/guides/gs/rest-service/) | Implemented | @RestController, records, JSON |
+| `02-spring-scheduling-tasks` | [Scheduling Tasks](https://spring.io/guides/gs/scheduling-tasks/) | Implemented | @Scheduled, @EnableScheduling |
+| `03-quote-service` | [Consuming REST](https://spring.io/guides/gs/consuming-rest/) | Implemented | REST API provider, List.of() |
+| `03-spring-consuming-rest` | [Consuming REST](https://spring.io/guides/gs/consuming-rest/) | Implemented | RestClient, @Value |
 
 More guides will be added over time.
 
-## How to run an example
+## Quick Start
 
-From a module folder, for example `01-spring-hello-rest`:
+See [docs/QUICK_START.md](docs/QUICK_START.md) for run instructions.
 
 ```bash
+cd <module-folder>
 ./mvnw spring-boot:run
 ```
 
-  ## Module layout
+## Enhancements Beyond Official Spring Guides
 
-  Each module contains:
-  
+For some modules I extended the original guide examples:
+
+- **02-spring-scheduling-tasks:**
+  - Added integration test verifying scheduled method runs using Awaitility and `@MockitoSpyBean`
+
+- **03-quote-service:**
+  - Reimplemented the sample quote backend as a standalone Spring Boot app
+  - Added tests for `/api/`, `/api/random`, and `/api/{id}`
+  - Fixed thread-safety issue with random quote selection (ThreadLocalRandom)
+
+- **03-spring-consuming-rest:**
+  - Used modern `RestClient` instead of deprecated `RestTemplate`
+  - Added `/quote` endpoint that calls backend on demand
+  - Added error handling and externalized configuration for backend URL
+
+## Module Layout
+
 ```
-  module-name/
-  ├── src/main/java/              # Source code
-  ├── src/test/java/              # Tests (where applicable)
-  ├── docs/
-  │   ├── images/                 # Screenshots
-  │   ├── setup/                  # How to create and run the project
-  │   ├── concepts/               # Explanations of key classes and patterns
-  │   └── reference/              # Original Spring guide (where applicable)
-  ├── pom.xml                     # Maven configuration
-  └── README.md                   # Overview, quick start, and documentation index
+module-name/
+├── src/main/java/              # Source code
+├── src/test/java/              # Tests
+├── docs/
+│   ├── setup/                  # How to create and run the project
+│   ├── concepts/               # Explanations of key classes and patterns
+│   └── reference/              # Original Spring guide (where applicable)
+├── pom.xml                     # Maven configuration
+└── README.md                   # Overview and documentation index
 ```
-  The 03 modules also include:
-  
-  - `docs/DEVELOPER_NOTES.md`   - Personal notes and detailed 
-  - `docs/adr/`                 - Architecture Decision Records documenting the "why" in each design choices
 
+The 03 modules also include:
+- `docs/DEVELOPER_NOTES.md` - Personal notes and detailed explanations
+- `docs/adr/` - Architecture Decision Records documenting the "why" behind design choices
 
+## Documentation
 
-Custom implementations and extensions will be added over time.
-This repository is meant to walk through the Spring Boot tutorials, learn best spring practices, and document it all a structured way for reuse.
+| Document | Purpose |
+|----------|---------|
+| [docs/QUICK_START.md](docs/QUICK_START.md) | Run instructions for all modules |
+| [docs/project.md](docs/project.md) | Audit summary and backlog |
+| Module `docs/adr/` | Architecture Decision Records |
+| Module `docs/concepts/` | Deep dives on patterns |
+
+## Technology Stack
+
+- **Spring Boot 4.0.0** (Spring Framework 7)
+- **Java 17**
+- **Maven** with multi-module parent POM
+
+## Testing
+
+Run all tests from repo root:
+```bash
+./mvnw test
+```
+
+## Related Resources
+
+- [Spring Guides](https://spring.io/guides)
+- [Spring Boot Reference](https://docs.spring.io/spring-boot/docs/current/reference/html/)
+- [Spring Initializr](https://start.spring.io/)

@@ -14,10 +14,11 @@ and the Spring Boot application setup (entry point, config, tests).
 |-----------------------------------------------------------------------------------------------------------------------|------------------------------------------------|--------------------------------|
 | [`Quote.java`](../src/main/java/com/example/consumingrest/Quote.java)                                                 | Record for JSON response                       | Shared JSON shape with service |
 | [`Value.java`](../src/main/java/com/example/consumingrest/Value.java)                                                 | Nested record (`id`, `quote` text)             | Shared JSON shape with service |
-| [`QuoteController.java`](../src/main/java/com/example/consumingrest/QuoteController.java)                             | REST client controller, fetches quote from API | Uses `RestClient`              |
+| [`QuoteController.java`](../src/main/java/com/example/consumingrest/QuoteController.java)                             | REST client controller, fetches quote from API | Uses `RestClient`, error handling |
 | [`ConsumingRestApplication.java`](../src/main/java/com/example/consumingrest/ConsumingRestApplication.java)           | Main Spring Boot application entry point       | Boots the app on port 8081     |
-| [`application.properties`](../src/main/resources/application.properties)                                              | Configuration                                  | Sets `server.port=8081`        |
+| [`application.properties`](../src/main/resources/application.properties)                                              | Configuration                                  | Port + quote-service base URL  |
 | [`ConsumingRestApplicationTests.java`](../src/test/java/com/example/consumingrest/ConsumingRestApplicationTests.java) | Tests                                          | Spring Boot test scaffold      |
+| [`QuoteControllerTest.java`](../src/test/java/com/example/consumingrest/QuoteControllerTest.java)                     | Endpoint tests with mocked backend             | MockRestServiceServer          |
 
 ---
 
@@ -415,8 +416,9 @@ TODO: Explain the controller
 - `@RestController`
 - `@GetMapping`
 - `RestClient` (Spring Boot 3.2+)
-- Constructor injection
+- Constructor injection with `@Value` for externalized config
 - `.get().uri().retrieve().body()`
+- Error handling with `RestClientException` and fallback response
 
 ---
 
@@ -441,6 +443,7 @@ TODO: Explain the configuration
 
 ```properties
 server.port=8081
+quote.service.base-url=http://localhost:8080
 ```
 
 ---

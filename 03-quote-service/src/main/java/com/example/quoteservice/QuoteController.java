@@ -1,7 +1,7 @@
 package com.example.quoteservice;
 
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class QuoteController {
-
-    private static final Random random = new Random();
 
     private static final List<Value> QUOTES = List.of(
         new Value(1L, "Working with Spring Boot is like pair-programming with the Spring developers."),
@@ -52,10 +50,11 @@ public class QuoteController {
 
     /**
      * Returns a random quote.
+     * Uses ThreadLocalRandom for thread-safe random selection in singleton bean.
      */
     @GetMapping("/random")
     public Quote random() {
-        Value value = QUOTES.get(random.nextInt(QUOTES.size()));
+        Value value = QUOTES.get(ThreadLocalRandom.current().nextInt(QUOTES.size()));
         return new Quote("success", value);
     }
 

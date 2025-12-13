@@ -15,9 +15,10 @@ Based on [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guide
 │   ├── Quote.java                      # Record for JSON response
 │   └── Value.java                      # Record for nested JSON object
 ├── src/main/resources/
-│   └── application.properties          # Port config (8081)
+│   └── application.properties          # Port config (8081) + quote-service URL
 ├── src/test/java/com/example/consumingrest/
-│   └── ConsumingRestApplicationTests.java  # Spring context test
+│   ├── ConsumingRestApplicationTests.java  # Spring context test
+│   └── QuoteControllerTest.java            # Endpoint tests with mocked backend
 └── docs/
     ├── DEVELOPER_NOTES.md               # My developer notes
     ├── images/                          # Screenshots
@@ -31,7 +32,9 @@ Based on [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guide
     │   └── guide.md                     # Original Spring guide
     └── adr/
         ├── ADR-0003-use-restclient.md   # Why RestClient
-        └── ADR-0004-expose-quote-endpoint.md  # Why REST endpoint
+        ├── ADR-0004-expose-quote-endpoint.md  # Why REST endpoint
+        ├── ADR-0005-error-handling-fallback.md  # Why graceful error handling
+        └── ADR-0006-externalize-base-url.md     # Why configurable URL
 ```
 
 ## How It Works
@@ -101,6 +104,8 @@ curl http://localhost:8081/quote
 - **RestClient** - Spring Boot 3.2+ HTTP client for making REST calls.
 - **Java Records** - Immutable data classes (`Quote`, `Value`).
 - **Constructor Injection** - How Spring provides dependencies.
+- **@Value** - Inject configuration from `application.properties`.
+- **Error Handling** - Graceful fallback when backend is unavailable.
 - **@JsonIgnoreProperties** - Ignore unknown JSON fields during deserialization.
 
 ## Documentation
@@ -120,6 +125,8 @@ curl http://localhost:8081/quote
 |--------------------------------------------------------|----------------------------------------------------|
 | [ADR-0003](docs/adr/ADR-0003-use-restclient.md)        | Why RestClient instead of RestTemplate             |
 | [ADR-0004](docs/adr/ADR-0004-expose-quote-endpoint.md) | Why a REST endpoint instead of ApplicationRunner   |
+| [ADR-0005](docs/adr/ADR-0005-error-handling-fallback.md) | Why graceful error handling with fallback        |
+| [ADR-0006](docs/adr/ADR-0006-externalize-base-url.md)  | Why externalize the quote-service URL              |
 
 ## Related
 
