@@ -41,16 +41,16 @@ java-tutorials/
 
 ---
 
-### 02-spring-scheduling-tasks (Score: 9/10)
+### 02-spring-scheduling-tasks (Score: 9.5/10)
 
 **Strengths:**
 - Strong Awaitility test pattern (excellent for async testing)
 - Exceptional SLF4J vs java.util.logging explanation
 - `@MockitoSpyBean` (Spring Boot 4.0.0) documented
 - Well-organized documentation
+- Thread-safe `DateTimeFormatter` (fixed from SimpleDateFormat)
 
 **Issues:**
-- Outdated `SimpleDateFormat` (should use `java.time`)
 - Minimal `application.properties` examples
 
 **Files:**

@@ -110,7 +110,7 @@ Runs the annotated method every 5000 milliseconds (5 seconds):
 ```java
 @Scheduled(fixedRate = 5000)
 public void reportCurrentTime() {
-    log.info("The time is now {}", dateFormat.format(new Date()));
+    log.info("The time is now {}", LocalTime.now().format(TIME_FORMATTER));
 }
 ```
 

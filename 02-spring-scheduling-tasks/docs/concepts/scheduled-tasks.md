@@ -8,11 +8,12 @@ public class ScheduledTasks {
 
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    // DateTimeFormatter is thread-safe (unlike SimpleDateFormat)
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
-        log.info("The time is now {}", dateFormat.format(new Date()));
+        log.info("The time is now {}", LocalTime.now().format(TIME_FORMATTER));
     }
 }
 ```
@@ -33,15 +34,17 @@ private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 - `log.info(...)` writes an informational log message.
 - Logging is preferred over `System.out.println` in Spring apps.
 
-## Date format field
+## Time formatter field
 
 ```java
-private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
 ```
 
-- Defines how the time will be printed.
+- Defines how the time will be printed using the modern `java.time` API.
 - `"HH:mm:ss"` means hours:minutes:seconds in 24-hour time.
 - Example output: `13:45:07`
+- `DateTimeFormatter` is **thread-safe** (unlike the older `SimpleDateFormat`), making it safe
+  to use as a static field in a multi-threaded environment like Spring's scheduler.
 
 ## `@Scheduled(fixedRate = 5000)`
 
@@ -57,11 +60,11 @@ public void reportCurrentTime() { ... }
 ## Method body
 
 ```java
-log.info("The time is now {}", dateFormat.format(new Date()));
+log.info("The time is now {}", LocalTime.now().format(TIME_FORMATTER));
 ```
 
-- `new Date()` gets the current date and time.
-- `dateFormat.format(...)` turns it into a string like `"13:45:07"`.
+- `LocalTime.now()` gets the current time (from `java.time` package).
+- `.format(TIME_FORMATTER)` turns it into a string like `"13:45:07"`.
 - `"The time is now {}"` is a message template.
 - `{}` is replaced by the formatted time.
 - The final log line looks like: `The time is now 13:45:07`

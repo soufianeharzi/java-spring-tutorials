@@ -30,7 +30,8 @@ Managed in parent `pom.xml`:
 | Tool | Version |
 |------|---------|
 | JaCoCo | 0.8.14 |
-| PITest | 1.19.1 |
+| PITest | 1.22.0 |
+| pitest-junit5-plugin | 1.2.1 |
 | SpotBugs | 4.9.8.2 |
 | Checkstyle | 3.6.0 |
 | OWASP Dependency-Check | 12.1.0 |
