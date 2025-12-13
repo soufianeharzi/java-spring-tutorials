@@ -195,7 +195,14 @@ jobs:
             ${{ runner.os }}-nvd-
 
       - name: Run OWASP Dependency-Check
-        run: ./mvnw -B -ntp org.owasp:dependency-check-maven:aggregate
+        env:
+          OSS_INDEX_USERNAME: ${{ secrets.OSS_INDEX_USERNAME }}
+          OSS_INDEX_TOKEN: ${{ secrets.OSS_INDEX_TOKEN }}
+        run: |
+          ./mvnw -B -ntp org.owasp:dependency-check-maven:aggregate \
+            -DossIndexServerId=ossindex \
+            -Dossindex.username="$OSS_INDEX_USERNAME" \
+            -Dossindex.password="$OSS_INDEX_TOKEN"
 
       - name: Generate Security Summary
         if: always()
@@ -209,7 +216,7 @@ jobs:
           echo "| Setting | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| Fail Build CVSS | >=7 (High/Critical) |" >> $GITHUB_STEP_SUMMARY
-          echo "| Data Source | NVD (National Vulnerability Database) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Data Sources | NVD + Sonatype OSS Index |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Result" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY

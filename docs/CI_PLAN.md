@@ -76,6 +76,21 @@ All commands run from the repository root using the aggregator POM:
 - **CodeQL runs weekly** in addition to push/PR triggers
 - **Dependabot** checks for Maven and GitHub Actions updates weekly
 
+## OWASP Configuration
+
+OWASP Dependency-Check uses two vulnerability databases:
+- **NVD** (National Vulnerability Database) - no authentication required
+- **Sonatype OSS Index** - requires authentication to avoid rate limiting
+
+### Required Secrets
+
+| Secret | Description |
+|--------|-------------|
+| `OSS_INDEX_USERNAME` | Your Sonatype OSS Index email |
+| `OSS_INDEX_TOKEN` | API token from ossindex.sonatype.org |
+
+Register for free at https://ossindex.sonatype.org/ to get credentials.
+
 ## Handling Failures
 
 ### Checkstyle violations
