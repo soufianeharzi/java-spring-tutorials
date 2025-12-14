@@ -25,6 +25,7 @@ MODULES = [
     "modules/02-spring-scheduling-tasks",
     "modules/03-quote-service",
     "modules/03-spring-consuming-rest",
+    "modules/04-spring-relational-data-access",
 ]
 
 

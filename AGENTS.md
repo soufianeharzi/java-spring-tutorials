@@ -5,7 +5,7 @@ AI guidance for working with this repository.
 ## Project Overview
 
 **Stack:** Spring Boot 4.0.0, Java 17, Maven
-**Structure:** Multi-module monorepo with 4 tutorial modules
+**Structure:** Multi-module monorepo with 5 tutorial modules
 **Purpose:** Hands-on implementations of official Spring Guides with detailed documentation
 
 ## Read First
@@ -111,7 +111,7 @@ Before making changes, read these in order:
 
 **GitHub Actions** (`.github/workflows/java-ci.yml`):
 - `build-test`: Runs on all pushes/PRs - tests, JaCoCo, Checkstyle, SpotBugs
-- `link-check`: Validates markdown links (excludes shields.io, localhost)
+- `link-check`: Validates markdown links (config in `.lychee.toml`)
 - `mutation-test`: PITest (main branch only) - update `-pl` list to add new modules
 - `update-badges`: Generates badge JSON files (main branch only)
 - `security-check`: OWASP dependency scan (main branch only)
@@ -127,11 +127,24 @@ Before making changes, read these in order:
 - PITest: add module to `-pl` list in `mutation-test` job (ask first)
 - Badge script: add module to `MODULES` list in `ci/scripts/ci_metrics_summary.py`
 
-**Run link checker locally:**
+## Link Checking
+
+**Configuration:** `.lychee.toml` (used by CI and local runs)
+
+**What's excluded:**
+- `templates/*` - placeholder links by design (e.g., `{guide-slug}`, `{package}`)
+- `img.shields.io` - dynamic badges, often timeout
+- `localhost`, `127.0.0.1` - local development URLs
+- `medium.com` - blocks automated requests (403)
+- Placeholder URL patterns like `https://docs.spring.io/...`
+
+**Run locally:**
 ```bash
-# Install lychee: brew install lychee (macOS) or cargo install lychee
-lychee '**/*.md' --exclude 'img.shields.io' --exclude 'localhost'
+# Install: brew install lychee (macOS) or cargo install lychee
+lychee '**/*.md'
 ```
+
+**When adding templates:** Placeholder links are fine - the `templates/` folder is excluded from checking.
 
 ## Consistency Rules
 
@@ -171,6 +184,7 @@ lychee '**/*.md' --exclude 'img.shields.io' --exclude 'localhost'
 | Parent POM | `pom.xml` |
 | CI Workflow | `.github/workflows/java-ci.yml` |
 | Checkstyle | `checkstyle.xml` |
+| Link Checker Config | `.lychee.toml` |
 | Badge Generator | `ci/scripts/ci_metrics_summary.py` |
 | ADR Index | `docs/adr/README.md` |
 | Quick Start | `docs/QUICK_START.md` |
@@ -183,6 +197,7 @@ lychee '**/*.md' --exclude 'img.shields.io' --exclude 'localhost'
 | 02-spring-scheduling-tasks | 8080 (console only) |
 | 03-quote-service | 8080 |
 | 03-spring-consuming-rest | 8081 |
+| 04-spring-relational-data-access | N/A (console only) |
 
 ## Links
 

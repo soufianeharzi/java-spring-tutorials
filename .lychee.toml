@@ -1,0 +1,41 @@
+# Lychee link checker configuration
+# https://lychee.cli.rs/usage/config/
+
+# Exclude patterns
+exclude = [
+    # Shields.io badges (dynamic, often timeout)
+    "img.shields.io",
+
+    # Local development
+    "localhost",
+    "127.0.0.1",
+
+    # Placeholder URLs in templates (not meant to be valid)
+    "https://docs.spring.io/\\.\\.\\.",
+    "https://docs.oracle.com/\\.\\.\\.",
+    "https://spring.io/guides/gs/\\{",
+
+    # Medium.com blocks automated requests
+    "medium.com",
+]
+
+# Exclude paths (templates have placeholder links by design)
+exclude_path = [
+    "templates/*",
+]
+
+# Accept these status codes as valid
+accept = [
+    "100..=103",
+    "200..=299",
+    "403",  # Some sites block bots but links are valid
+]
+
+# Timeout per request
+timeout = 30
+
+# Max concurrent requests
+max_concurrency = 16
+
+# Don't check mail addresses
+include_mail = false

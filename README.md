@@ -39,6 +39,7 @@ flowchart LR
 | `02-spring-scheduling-tasks` | [Scheduling Tasks](https://spring.io/guides/gs/scheduling-tasks/) | Implemented | @Scheduled, @EnableScheduling |
 | `03-quote-service` | [Consuming REST](https://spring.io/guides/gs/consuming-rest/) | Implemented | REST API provider, List.of() |
 | `03-spring-consuming-rest` | [Consuming REST](https://spring.io/guides/gs/consuming-rest/) | Implemented | RestClient, @Value |
+| `04-spring-relational-data-access` | [Relational Data Access](https://spring.io/guides/gs/relational-data-access/) | Implemented | JdbcTemplate, H2, CommandLineRunner |
 
 More guides will be added over time.
 
@@ -90,10 +91,12 @@ The 03 modules also include:
 
 | Document | Purpose |
 |----------|---------|
+| [AGENTS.md](AGENTS.md) | AI guidance for scaffolding and consistency |
 | [docs/QUICK_START.md](docs/QUICK_START.md) | Run instructions for all modules |
 | [docs/project.md](docs/project.md) | Audit summary and backlog |
 | [docs/CI_PLAN.md](docs/CI_PLAN.md) | CI/CD quality gates and thresholds |
 | [docs/adr/](docs/adr/) | Repository-level ADRs |
+| [templates/](templates/) | Scaffolding templates for new modules |
 | Module `docs/adr/` | Module-specific ADRs |
 | Module `docs/concepts/` | Deep dives on patterns |
 

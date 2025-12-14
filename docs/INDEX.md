@@ -10,6 +10,7 @@ Complete file index for the java-spring-tutorials repository.
 - [02-spring-scheduling-tasks](#02-spring-scheduling-tasks)
 - [03-quote-service](#03-quote-service)
 - [03-spring-consuming-rest](#03-spring-consuming-rest)
+- [04-spring-relational-data-access](#04-spring-relational-data-access)
 - [Documentation](#documentation)
 - [CI/CD & Scripts](#cicd--scripts)
 - [By File Type](#by-file-type)
@@ -20,6 +21,7 @@ Complete file index for the java-spring-tutorials repository.
 
 | Type | Link |
 |------|------|
+| AI guidance | [AGENTS.md](../AGENTS.md) |
 | Run all modules | [QUICK_START.md](QUICK_START.md) |
 | CI quality gates | [CI_PLAN.md](CI_PLAN.md) |
 | Documentation audit | [AUDIT.md](AUDIT.md) |
@@ -32,8 +34,10 @@ Complete file index for the java-spring-tutorials repository.
 ```
 java-spring-tutorials/
 ├── README.md
+├── AGENTS.md
 ├── pom.xml
 ├── checkstyle.xml
+├── .editorconfig
 ├── .gitignore
 └── .github/workflows/java-ci.yml
 ```
@@ -41,8 +45,10 @@ java-spring-tutorials/
 | File | Purpose |
 |------|---------|
 | [README.md](../README.md) | Repository overview, badges, module list |
+| [AGENTS.md](../AGENTS.md) | AI guidance for scaffolding and consistency |
 | [pom.xml](../pom.xml) | Parent POM (aggregator for all modules) |
 | [checkstyle.xml](../checkstyle.xml) | Shared code style rules |
+| [.editorconfig](../.editorconfig) | Editor formatting rules |
 | [.gitignore](../.gitignore) | Git ignore patterns |
 | [java-ci.yml](../.github/workflows/java-ci.yml) | GitHub Actions CI workflow |
 
@@ -256,6 +262,44 @@ REST client consuming the quote-service using `RestClient`.
 
 ---
 
+## 04-spring-relational-data-access
+
+Accessing relational data using Spring's `JdbcTemplate` with H2 in-memory database.
+
+**Spring Guide:** [Accessing Relational Data using JDBC with Spring](https://spring.io/guides/gs/relational-data-access/)
+
+### Source Files
+
+| File | Package | Description |
+|------|---------|-------------|
+| [SpringRelationalDataAccessApplication.java](../modules/04-spring-relational-data-access/src/main/java/com/example/relationaldataaccess/SpringRelationalDataAccessApplication.java) | `com.example.relationaldataaccess` | Main entry point with CommandLineRunner |
+| [Customer.java](../modules/04-spring-relational-data-access/src/main/java/com/example/relationaldataaccess/Customer.java) | `com.example.relationaldataaccess` | Customer record |
+
+### Test Files
+
+| File | Description |
+|------|-------------|
+| [SpringRelationalDataAccessApplicationTests.java](../modules/04-spring-relational-data-access/src/test/java/com/example/relationaldataaccess/SpringRelationalDataAccessApplicationTests.java) | Context load test |
+
+### Configuration
+
+| File | Description |
+|------|-------------|
+| [pom.xml](../modules/04-spring-relational-data-access/pom.xml) | Module POM |
+| [application.properties](../modules/04-spring-relational-data-access/src/main/resources/application.properties) | Spring Boot config |
+
+### Documentation
+
+| File | Description |
+|------|-------------|
+| [README.md](../modules/04-spring-relational-data-access/README.md) | Module overview |
+| [spring-initializr.md](../modules/04-spring-relational-data-access/docs/setup/spring-initializr.md) | Project setup |
+| [run-instructions.md](../modules/04-spring-relational-data-access/docs/setup/run-instructions.md) | How to run |
+| [jdbc-template.md](../modules/04-spring-relational-data-access/docs/concepts/jdbc-template.md) | JdbcTemplate explanation |
+| [guide.md](../modules/04-spring-relational-data-access/docs/reference/guide.md) | Original Spring guide reference |
+
+---
+
 ## Documentation
 
 ### Root-Level Docs
@@ -280,6 +324,9 @@ REST client consuming the quote-service using `RestClient`.
 | Template | Purpose |
 |----------|---------|
 | [MODULE_README.md](../templates/MODULE_README.md) | New module README |
+| [pom.xml](../templates/pom.xml) | Child module POM with quality plugins |
+| [spring-initializr.md](../templates/spring-initializr.md) | Spring Initializr setup docs |
+| [run-instructions.md](../templates/run-instructions.md) | Module run instructions |
 | [ADR_TEMPLATE.md](../templates/ADR_TEMPLATE.md) | Architecture Decision Record |
 | [CONCEPT.md](../templates/CONCEPT.md) | Concept explanation |
 | [DEVELOPER_NOTES.md](../templates/DEVELOPER_NOTES.md) | Personal notes |

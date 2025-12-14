@@ -142,7 +142,7 @@ java-spring-tutorials/
 ### Phase C (Later)
 - [ ] Add CHANGELOG.md
 - [ ] Add requirements/ documentation
-- [ ] Add agents.md
+- [x] Add agents.md
 
 ### Phase D (Optional)
 - [ ] Add CONTRIBUTING.md

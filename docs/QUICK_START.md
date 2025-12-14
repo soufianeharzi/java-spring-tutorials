@@ -15,6 +15,7 @@ cd <module-folder>
 | 02-spring-scheduling-tasks | N/A | Console output only |
 | 03-quote-service | 8080 | http://localhost:8080/api/random |
 | 03-spring-consuming-rest | 8081 | http://localhost:8081/quote |
+| 04-spring-relational-data-access | N/A | Console output only |
 
 ## Running the 03 Modules Together
 

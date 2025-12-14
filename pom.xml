@@ -15,6 +15,7 @@
     <module>modules/02-spring-scheduling-tasks</module>
     <module>modules/03-quote-service</module>
     <module>modules/03-spring-consuming-rest</module>
+    <module>modules/04-spring-relational-data-access</module>
   </modules>
 
   <properties>

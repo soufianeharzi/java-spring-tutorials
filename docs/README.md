@@ -6,6 +6,7 @@ Welcome to the java-spring-tutorials documentation.
 
 | Document | Description |
 |----------|-------------|
+| [AGENTS.md](../AGENTS.md) | AI guidance for scaffolding and consistency |
 | [QUICK_START.md](QUICK_START.md) | Run instructions for all modules |
 | [CI_PLAN.md](CI_PLAN.md) | CI/CD quality gates and thresholds |
 | [INDEX.md](INDEX.md) | Complete file index |
@@ -31,6 +32,7 @@ Each module has its own documentation in `modules/{module}/docs/`:
 | 02-spring-scheduling-tasks | [README](../modules/02-spring-scheduling-tasks/README.md) | @Scheduled, Awaitility testing |
 | 03-quote-service | [README](../modules/03-quote-service/README.md) | Quote API, ThreadLocalRandom |
 | 03-spring-consuming-rest | [README](../modules/03-spring-consuming-rest/README.md) | RestClient, error handling |
+| 04-spring-relational-data-access | [README](../modules/04-spring-relational-data-access/README.md) | JdbcTemplate, H2, CommandLineRunner |
 
 ## Templates
 
@@ -39,6 +41,9 @@ Scaffolding templates for new modules and docs:
 | Template | Purpose |
 |----------|---------|
 | [MODULE_README.md](../templates/MODULE_README.md) | New module README |
+| [pom.xml](../templates/pom.xml) | Child module POM with quality plugins |
+| [spring-initializr.md](../templates/spring-initializr.md) | Spring Initializr setup docs |
+| [run-instructions.md](../templates/run-instructions.md) | Module run instructions |
 | [ADR_TEMPLATE.md](../templates/ADR_TEMPLATE.md) | Architecture Decision Record |
 | [CONCEPT.md](../templates/CONCEPT.md) | Technical explanation |
 | [DEVELOPER_NOTES.md](../templates/DEVELOPER_NOTES.md) | Personal notes |
@@ -49,4 +54,3 @@ Scaffolding templates for new modules and docs:
 |----------|-------------|
 | [project.md](project.md) | Audit summary and backlog |
 | [AUDIT.md](AUDIT.md) | Documentation structure audit |
-| [ORGANIZATION.md](ORGANIZATION.md) | Repository reorganization plan |
