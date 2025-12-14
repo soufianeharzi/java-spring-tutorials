@@ -1,4 +1,4 @@
-# ADR-0004: Expose a REST Endpoint Instead of ApplicationRunner
+# ADR-0002: Expose a REST Endpoint Instead of ApplicationRunner
 
 Status: Accepted
 Date: 2025-12-13

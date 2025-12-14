@@ -95,7 +95,6 @@ Before making changes, read these in order:
 **Numbering:**
 - Repository-level: `docs/adr/ADR-XXXX-title.md` (sequential from 0001)
 - Module-level: `modules/{module}/docs/adr/ADR-XXXX-title.md` (sequential per module, start at 0001)
-- Note: `03-spring-consuming-rest` starts at ADR-0003 (inherited); do not add placeholder ADRs
 
 **Process:**
 1. Use `templates/ADR_TEMPLATE.md`

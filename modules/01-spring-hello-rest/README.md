@@ -4,7 +4,7 @@
 [![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/01-spring-hello-rest/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
 [![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/01-spring-hello-rest/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
-> Part of the [`java-tutorials-spring`](../) collection of Spring.io guide implementations.
+> Part of the [`java-spring-tutorials`](../../) collection of Spring.io guide implementations.
 
 A simple Spring Boot application that demonstrates how to build a RESTful web
 service.

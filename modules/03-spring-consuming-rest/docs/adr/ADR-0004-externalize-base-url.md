@@ -1,4 +1,4 @@
-# ADR-0006: Externalize Quote-Service Base URL via Configuration
+# ADR-0004: Externalize Quote-Service Base URL via Configuration
 
 Status: Accepted
 Date: 2025-12-13

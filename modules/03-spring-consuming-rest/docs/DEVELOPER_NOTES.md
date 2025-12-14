@@ -444,7 +444,7 @@ try {
 }
 ```
 Returns a fallback response instead of crashing when quote-service is down.
-See [ADR-0005](adr/ADR-0005-error-handling-fallback.md) for rationale.
+See [ADR-0003](adr/ADR-0003-error-handling-fallback.md) for rationale.
 
 ---
 
@@ -486,7 +486,7 @@ quote.service.base-url=http://localhost:8080
 - Easy to change without code modifications
 - Different values for dev/test/prod environments
 - Can override via command line: `-Dquote.service.base-url=http://prod:8080`
-- See [ADR-0006](adr/ADR-0006-externalize-base-url.md) for rationale
+- See [ADR-0004](adr/ADR-0004-externalize-base-url.md) for rationale
 
 ---
 

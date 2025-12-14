@@ -51,7 +51,7 @@ public QuoteController(RestClient.Builder builder,
 - Now it comes from configuration, so we can change it without recompiling.
 - In production, you might point to a different host or port.
 
-See [ADR-0006](../adr/ADR-0006-externalize-base-url.md) for the full decision.
+See [ADR-0004](../adr/ADR-0004-externalize-base-url.md) for the full decision.
 
 **Why use the constructor?**
 This pattern is called "constructor injection." Benefits:
@@ -105,7 +105,7 @@ Now we catch `RestClientException` and return a fallback response:
 
 This keeps our service running even when the backend is down. Clients can check the `type` field to know if something went wrong.
 
-See [ADR-0005](../adr/ADR-0005-error-handling-fallback.md) for the full decision.
+See [ADR-0003](../adr/ADR-0003-error-handling-fallback.md) for the full decision.
 
 ---
 
@@ -169,7 +169,7 @@ Spring has three HTTP clients:
 | WebClient      | When you need async/reactive code.                          |
 
 We use `RestClient` because it is the recommended choice for Spring Boot 3.2+ when making synchronous HTTP calls.
-See [ADR-0003](../adr/ADR-0003-use-restclient.md) for more details on why we chose RestClient.
+See [ADR-0001](../adr/ADR-0001-use-restclient.md) for more details on why we chose RestClient.
 
 ---
 

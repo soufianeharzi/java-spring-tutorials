@@ -1,4 +1,4 @@
-# ADR-0005: Error Handling and Fallback for Quote Fetch
+# ADR-0003: Error Handling and Fallback for Quote Fetch
 
 Status: Accepted
 Date: 2025-12-13

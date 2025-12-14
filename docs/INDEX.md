@@ -246,10 +246,10 @@ REST client consuming the quote-service using `RestClient`.
 
 | ADR | Decision |
 |-----|----------|
-| [ADR-0003-use-restclient.md](../modules/03-spring-consuming-rest/docs/adr/ADR-0003-use-restclient.md) | RestClient over RestTemplate |
-| [ADR-0004-expose-quote-endpoint.md](../modules/03-spring-consuming-rest/docs/adr/ADR-0004-expose-quote-endpoint.md) | Why `/quote` REST endpoint |
-| [ADR-0005-error-handling-fallback.md](../modules/03-spring-consuming-rest/docs/adr/ADR-0005-error-handling-fallback.md) | Graceful error handling |
-| [ADR-0006-externalize-base-url.md](../modules/03-spring-consuming-rest/docs/adr/ADR-0006-externalize-base-url.md) | Configurable backend URL |
+| [ADR-0001-use-restclient.md](../modules/03-spring-consuming-rest/docs/adr/ADR-0001-use-restclient.md) | RestClient over RestTemplate |
+| [ADR-0002-expose-quote-endpoint.md](../modules/03-spring-consuming-rest/docs/adr/ADR-0002-expose-quote-endpoint.md) | Why `/quote` REST endpoint |
+| [ADR-0003-error-handling-fallback.md](../modules/03-spring-consuming-rest/docs/adr/ADR-0003-error-handling-fallback.md) | Graceful error handling |
+| [ADR-0004-externalize-base-url.md](../modules/03-spring-consuming-rest/docs/adr/ADR-0004-externalize-base-url.md) | Configurable backend URL |
 
 ### Images
 
@@ -380,10 +380,10 @@ Auto-generated JSON files for Shields.io:
 | 03-qs | [ADR-0001](../modules/03-quote-service/docs/adr/ADR-0001-split-provider-consumer.md) | Split modules |
 | 03-qs | [ADR-0002](../modules/03-quote-service/docs/adr/ADR-0002-rest-api-shape.md) | API shape |
 | 03-qs | [ADR-0003](../modules/03-quote-service/docs/adr/ADR-0003-use-threadlocalrandom.md) | ThreadLocalRandom |
-| 03-cr | [ADR-0003](../modules/03-spring-consuming-rest/docs/adr/ADR-0003-use-restclient.md) | RestClient |
-| 03-cr | [ADR-0004](../modules/03-spring-consuming-rest/docs/adr/ADR-0004-expose-quote-endpoint.md) | Quote endpoint |
-| 03-cr | [ADR-0005](../modules/03-spring-consuming-rest/docs/adr/ADR-0005-error-handling-fallback.md) | Error handling |
-| 03-cr | [ADR-0006](../modules/03-spring-consuming-rest/docs/adr/ADR-0006-externalize-base-url.md) | Externalize URL |
+| 03-cr | [ADR-0001](../modules/03-spring-consuming-rest/docs/adr/ADR-0001-use-restclient.md) | RestClient |
+| 03-cr | [ADR-0002](../modules/03-spring-consuming-rest/docs/adr/ADR-0002-expose-quote-endpoint.md) | Quote endpoint |
+| 03-cr | [ADR-0003](../modules/03-spring-consuming-rest/docs/adr/ADR-0003-error-handling-fallback.md) | Error handling |
+| 03-cr | [ADR-0004](../modules/03-spring-consuming-rest/docs/adr/ADR-0004-externalize-base-url.md) | Externalize URL |
 
 ### All Images (10)
 
@@ -408,7 +408,7 @@ Auto-generated JSON files for Shields.io:
 |----------|-------|
 | Java source files | 14 |
 | Java test files | 8 |
-| Markdown docs | 33 |
+| Markdown docs | 54 |
 | ADRs | 11 |
 | Images | 10 |
 | Modules | 5 |

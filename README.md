@@ -27,7 +27,7 @@ I believe in understanding over memorization. Every aspect is documented with ex
 | `02-spring-scheduling-tasks` | [Scheduling Tasks](https://spring.io/guides/gs/scheduling-tasks/) | Implemented | @Scheduled, @EnableScheduling |
 | `03-quote-service` | [Consuming REST](https://spring.io/guides/gs/consuming-rest/) | Implemented | REST API provider, List.of() |
 | `03-spring-consuming-rest` | [Consuming REST](https://spring.io/guides/gs/consuming-rest/) | Implemented | RestClient, @Value |
-| `04-spring-relational-data-access` | [Relational Data Access](https://spring.io/guides/gs/relational-data-access/) | Implemented | JdbcTemplate, H2, CommandLineRunner |
+| `04-spring-relational-data-access` | [Relational Data Access](https://spring.io/guides/gs/relational-data-access/) | Scaffold | JdbcTemplate, H2, CommandLineRunner |
 
 More guides will be added over time.
 

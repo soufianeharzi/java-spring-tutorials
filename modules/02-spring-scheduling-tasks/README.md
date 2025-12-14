@@ -4,7 +4,7 @@
 [![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/02-spring-scheduling-tasks/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
 [![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/02-spring-scheduling-tasks/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
-> Part of the [`java-tutorials-spring`](../) collection of Spring.io guide implementations.
+> Part of the [`java-spring-tutorials`](../../) collection of Spring.io guide implementations.
 
 A Spring Boot application that demonstrates scheduled task execution using the `@Scheduled` annotation. The app prints the current time to the console every 5 seconds.
 
