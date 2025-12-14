@@ -42,5 +42,5 @@ The consumer runs on port 8081 (configured in `application.properties`) and call
 
 ## References
 
-- https://spring.io/guides/gs/consuming-rest
+- https://spring.io/guides/gs/consuming-rest/
 - https://docs.spring.io/spring-boot/reference/io/rest-client.html

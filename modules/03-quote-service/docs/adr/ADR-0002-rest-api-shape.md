@@ -46,5 +46,5 @@ Use the nested JSON structure with `type` and `value` fields to maintain compati
 
 ## References
 
-- https://spring.io/guides/gs/consuming-rest
-- https://spring.io/guides/gs/rest-service
+- https://spring.io/guides/gs/consuming-rest/
+- https://spring.io/guides/gs/rest-service/

@@ -35,5 +35,5 @@ Each module is a standalone Spring Boot application that can be built and run in
 
 ## References
 
-- https://spring.io/guides/gs/consuming-rest
-- https://spring.io/guides/gs/rest-service
+- https://spring.io/guides/gs/consuming-rest/
+- https://spring.io/guides/gs/rest-service/
