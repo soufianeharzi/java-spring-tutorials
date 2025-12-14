@@ -14,40 +14,40 @@ Before making changes, read these in order:
 1. This file (AGENTS.md)
 2. [docs/README.md](docs/README.md) - Documentation hub
 3. [docs/adr/README.md](docs/adr/README.md) - ADR index and numbering
-4. Target module's README and ADRs (especially for 03 modules)
+4. Target module's README and any module-level ADRs
 5. [templates/](templates/) - Use these for new files
 
 ## Adding a New Module
 
-1. **Create from template**: Copy structure from an existing module or use `templates/`
-2. **Required structure**:
-   ```
-   modules/XX-module-name/
-   ├── pom.xml                    # Child POM (see POM guidance below)
-   ├── README.md                  # Use templates/MODULE_README.md
-   ├── .gitattributes             # Copy from existing module
-   ├── src/main/resources/
-   │   └── application.properties # Set server.port if not 8080
-   └── docs/
-       ├── setup/
-       │   ├── spring-initializr.md
-       │   └── run-instructions.md
-       ├── concepts/              # At least one concept doc
-       ├── reference/
-       │   └── guide.md           # Link to Spring guide
-       └── images/
-   ```
-3. **Register module**: Add to parent `pom.xml` `<modules>` section
-4. **Badges**: Added automatically by CI after first successful build on main
-5. **Update docs**: Add to `docs/INDEX.md` and root `README.md` contents table
-6. **Update Module Ports table**: Add entry to the table below if module uses a port
+**Naming convention**: `modules/0N-spring-<guide-name>/` (e.g., `modules/04-spring-jdbc-data/`)
+
+**Scaffold checklist**:
+1. Copy `templates/MODULE_README.md` to `modules/0N-name/README.md`
+2. Create child `pom.xml` (inherit from parent, use `../../checkstyle.xml`)
+3. Copy `.gitattributes` from an existing module
+4. Create `src/main/resources/application.properties` (set `server.port`, avoid conflicts)
+5. Create docs structure:
+   - `docs/setup/spring-initializr.md` - Spring Initializr settings
+   - `docs/setup/run-instructions.md` - How to run the module
+   - `docs/concepts/` - At least one concept doc (use `templates/CONCEPT.md`)
+   - `docs/reference/guide.md` - Link to official Spring guide
+   - `docs/images/` - Screenshots (PNG preferred)
+6. For complex modules: add `docs/DEVELOPER_NOTES.md` (use template)
+7. For modules with ADRs: create `docs/adr/` folder
+
+**After scaffolding**:
+- Add `<module>modules/0N-name</module>` to parent `pom.xml`
+- Add to root `README.md` contents table
+- Add to `docs/INDEX.md`
+- Add port to Module Ports table below (if applicable)
+- After first successful CI build: add badge links to module README
 
 ## Adding Documentation
 
 - **Concept docs**: Use `templates/CONCEPT.md`, place in `docs/concepts/`
 - **Images**: Place in `docs/images/`, name descriptively (e.g., `feature-output.png`), use relative links
 - **Update links**: Add to module README, `docs/README.md`, and `docs/INDEX.md`
-- **API changes in 03 modules**: Update the "API Contract" section in both provider and consumer READMEs
+- **API changes**: If modules interact (provider/consumer), update "API Contract" section in all affected READMEs
 
 ## Commands
 
@@ -64,34 +64,39 @@ Before making changes, read these in order:
 # Run checkstyle
 ./mvnw checkstyle:check
 
-# Run mutation testing (03 modules only)
-./mvnw test org.pitest:pitest-maven:mutationCoverage -pl modules/03-quote-service
+# Run mutation testing (specify module)
+./mvnw test org.pitest:pitest-maven:mutationCoverage -pl modules/{module-name}
 ```
 
 ## Testing
 
 - All modules have unit tests in `src/test/java/`
 - Run `./mvnw test` from root to test all modules
-- Module 02 uses Awaitility for async scheduler testing
-- Module 03 uses MockMvc and mocked RestClient for isolation
+- Use appropriate testing libraries: Awaitility for async, MockMvc for REST endpoints
+- Add tests for new functionality before committing
 
 ## ADR Process
 
 **When to write an ADR:**
-- Architecture changes, new patterns, or significant design decisions
+- Architecture changes or new patterns
 - CI/CD configuration changes
-- New shared dependencies
+- New shared dependencies in parent POM
 - Deviations from Spring guide implementations
+- Significant behavior changes
+
+**Scope:**
+- **Repository-level**: Cross-cutting concerns (CI, shared deps, repo structure) → `docs/adr/`
+- **Module-level**: Module-specific decisions → `modules/{module}/docs/adr/`
 
 **Numbering:**
-- Repository-level ADRs: `docs/adr/ADR-XXXX-title.md` (sequential from 0001)
-- Module-specific ADRs: `modules/{module}/docs/adr/ADR-XXXX-title.md` (sequential per module)
-- Note: `03-spring-consuming-rest` starts at ADR-0003 (inherited from development); do not add placeholder ADRs
+- Repository-level: `docs/adr/ADR-XXXX-title.md` (sequential from 0001)
+- Module-level: `modules/{module}/docs/adr/ADR-XXXX-title.md` (sequential per module, start at 0001)
+- Note: `03-spring-consuming-rest` starts at ADR-0003 (inherited); do not add placeholder ADRs
 
 **Process:**
 1. Use `templates/ADR_TEMPLATE.md`
 2. Place in appropriate `docs/adr/` folder
-3. Update `docs/adr/README.md` index (for repo-level) or module README ADR table
+3. Update `docs/adr/README.md` index (repo-level) or module README ADR table (module-level)
 
 ## Parent/Child POM
 
@@ -105,16 +110,20 @@ Before making changes, read these in order:
 **GitHub Actions** (`.github/workflows/java-ci.yml`):
 - `build-test`: Runs on all pushes/PRs - tests, JaCoCo, Checkstyle, SpotBugs
 - `link-check`: Validates markdown links (excludes shields.io, localhost)
-- `mutation-test`: PITest on 03 modules (main branch only)
+- `mutation-test`: PITest (main branch only) - update `-pl` list to add new modules
 - `update-badges`: Generates badge JSON files (main branch only)
 - `security-check`: OWASP dependency scan (main branch only)
 
 **Badge generation:**
 - Script: `ci/scripts/ci_metrics_summary.py` parses XML reports
 - Output: `ci/badges/*.json` (aggregate) and `ci/badges/{module}/*.json`
-- Shields.io fetches JSON from raw.githubusercontent.com
 - Badges update automatically on successful main branch builds
 - **Do NOT edit badge JSON files manually** - they are overwritten by CI
+
+**Adding a new module to CI:**
+- Badges: automatic after first successful build
+- PITest: add module to `-pl` list in `mutation-test` job (ask first)
+- Badge script: add module to `MODULES` list in `ci/scripts/ci_metrics_summary.py`
 
 **Run link checker locally:**
 ```bash
@@ -127,8 +136,7 @@ lychee '**/*.md' --exclude 'img.shields.io' --exclude 'localhost'
 - **Formatting**: Follow `.editorconfig` (spaces for Java/MD, tabs for XML)
 - **Line endings**: LF for all files except `*.cmd` (CRLF)
 - **Markdown**: Use fenced code blocks with language, tables for structured data
-- **Images**: PNG preferred, descriptive names, store in `docs/images/`
-- **No module-level AGENTS.md**: Single root file only
+- **Images**: PNG preferred, descriptive names, store in `docs/images/`, use relative links
 
 ## Boundaries
 
@@ -137,18 +145,22 @@ lychee '**/*.md' --exclude 'img.shields.io' --exclude 'localhost'
 - Update docs when changing behavior
 - Add tests for new functionality
 - Follow existing code patterns
+- Run link checker before pushing doc changes
 
 ### Ask First
 - Adding new modules
-- Changing CI configuration
-- Modifying shared dependencies in parent POM
-- Architectural changes (create ADR)
+- Changing CI configuration (workflow, PITest modules)
+- Modifying shared dependencies or versions in parent POM
+- Adding PITest/mutation testing to new modules
+- Architectural changes (create ADR first)
 
 ### Never Do
 - Commit without running tests
 - Remove tests to make CI pass
 - Hardcode credentials or secrets
 - Skip checkstyle violations
+- Edit badge JSON files manually
+- Create module-level AGENTS.md files
 
 ## Key Files
 
