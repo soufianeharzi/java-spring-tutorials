@@ -75,5 +75,5 @@ Shields.io fetches JSON from `raw.githubusercontent.com` and renders the badge.
 
 ## References
 
-- [Shields.io Endpoint Badges](https://shields.io/endpoint)
+- [Shields.io Endpoint Badges](https://shields.io/badges/endpoint-badge)
 - Inspired by [contact-suite-spring-react](https://github.com/jguida941/contact-suite-spring-react) CI implementation

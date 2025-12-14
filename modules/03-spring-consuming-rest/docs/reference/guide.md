@@ -1,6 +1,6 @@
 # Consuming a RESTful Web Service with Spring
 
-**Link:** <https://spring.io/guides/gs/consuming-rest>
+**Link:** <https://spring.io/guides/gs/consuming-rest/>
 
 This guide walks you through the process of creating an application that consumes a RESTful web
 service.

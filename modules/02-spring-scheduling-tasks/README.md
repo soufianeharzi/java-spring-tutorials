@@ -8,7 +8,7 @@
 
 A Spring Boot application that demonstrates scheduled task execution using the `@Scheduled` annotation. The app prints the current time to the console every 5 seconds.
 
-Based on the official [Spring Scheduling Tasks Guide](https://spring.io/guides/gs/scheduling-tasks).
+Based on the official [Spring Scheduling Tasks Guide](https://spring.io/guides/gs/scheduling-tasks/).
 
 ## Requirements
 

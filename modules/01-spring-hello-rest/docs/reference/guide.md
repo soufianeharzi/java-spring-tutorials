@@ -2,7 +2,7 @@
 
 This guide provides an introduction to building RESTful web services using Spring Boot.
 
-Link: https://spring.io/guides/gs/rest-service
+Link: https://spring.io/guides/gs/rest-service/
 
 ---
 

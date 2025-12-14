@@ -5,7 +5,7 @@
 [![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
 [![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
-This repository contains hands-on implementations of the official [Spring Guides](https://spring.io/guides), along with detailed architectural breakdowns explaining the "what" and "why" behind the code.
+This repository contains hands-on implementations of the official [Spring Guides](https://spring.io/guides/), along with detailed architectural breakdowns explaining the "what" and "why" behind the code.
 
 Each subfolder is a small, focused project generated with Spring Initializr.
 
@@ -122,6 +122,6 @@ See [docs/CI_PLAN.md](docs/CI_PLAN.md) for details.
 
 ## Related Resources
 
-- [Spring Guides](https://spring.io/guides)
-- [Spring Boot Reference](https://docs.spring.io/spring-boot/docs/current/reference/html/)
+- [Spring Guides](https://spring.io/guides/)
+- [Spring Boot Reference](https://docs.spring.io/spring-boot/)
 - [Spring Initializr](https://start.spring.io/)

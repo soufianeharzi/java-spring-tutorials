@@ -2,7 +2,7 @@
 
 **Link:** This guide provides an introduction to scheduling tasks using Spring Boot.
 
-**Link:** https://spring.io/guides/gs/scheduling-tasks
+**Link:** https://spring.io/guides/gs/scheduling-tasks/
 
 This guide walks you through the steps for scheduling tasks with Spring.
 

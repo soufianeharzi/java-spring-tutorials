@@ -360,7 +360,7 @@ Auto-generated JSON files for Shields.io:
 | 03-cr | [Quote.java](../modules/03-spring-consuming-rest/src/main/java/com/example/consumingrest/Quote.java) | Response record |
 | 03-cr | [Value.java](../modules/03-spring-consuming-rest/src/main/java/com/example/consumingrest/Value.java) | Content record |
 
-### All Test Files (7)
+### All Test Files (8)
 
 | Module | File | Tests |
 |--------|------|-------|

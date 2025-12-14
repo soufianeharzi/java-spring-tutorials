@@ -6,7 +6,7 @@
 
 A Spring Boot application that consumes the [quote-service](../03-quote-service) REST API.
 
-Based on [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest).
+Based on [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest/).
 
 ## File Index
 
@@ -161,5 +161,5 @@ See [ADR-0005](docs/adr/ADR-0005-error-handling-fallback.md) for the design rati
 ## Related
 
 - [03-quote-service](../03-quote-service) - The backend this consumer calls
-- [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest)
+- [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest/)
 - [Spring Docs: REST Clients](https://docs.spring.io/spring-boot/reference/io/rest-client.html)

@@ -105,5 +105,5 @@ This service provides quotes in a specific JSON format that the [03-consuming-re
 ## Related
 
 - [03-consuming-rest](../03-spring-consuming-rest) - REST client that consumes this service
-- [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest)
-- [Spring Guide: Building a RESTful Web Service](https://spring.io/guides/gs/rest-service) - background on REST controllers
+- [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest/)
+- [Spring Guide: Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/) - background on REST controllers
