@@ -18,7 +18,7 @@ Options considered:
 
 ## Decision
 
-Use Shields.io endpoint badges that read from JSON files committed to the `/badges/` directory.
+Use Shields.io endpoint badges that read from JSON files committed to the `/ci/badges/` directory.
 
 The CI workflow uses three jobs with artifact-based data transfer:
 
@@ -47,7 +47,7 @@ Shields.io fetches JSON from `raw.githubusercontent.com` and renders the badge.
 ### Badge URLs
 
 ```markdown
-[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/jacoco.json)]
+[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/jacoco.json)]
 ```
 
 ## Consequences

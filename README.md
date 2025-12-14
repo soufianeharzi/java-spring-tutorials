@@ -1,9 +1,9 @@
 # java-tutorials-spring
 
 [![Build](https://github.com/jguida941/java-spring-tutorials/actions/workflows/java-ci.yml/badge.svg)](https://github.com/jguida941/java-spring-tutorials/actions/workflows/java-ci.yml)
-[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
-[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
-[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
+[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
 This repository contains hands-on implementations of the official [Spring Guides](https://spring.io/guides), along with detailed architectural breakdowns explaining the "what" and "why" behind the code.
 
@@ -112,7 +112,7 @@ Run all tests from repo root (uses aggregator POM):
 
 Run a single module:
 ```bash
-./mvnw test -pl 03-quote-service
+./mvnw test -pl modules/03-quote-service
 ```
 
 ## CI/CD

@@ -1,8 +1,8 @@
 # Quote Service
 
-[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/03-quote-service/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
-[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/03-quote-service/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
-[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/03-quote-service/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/03-quote-service/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/03-quote-service/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
+[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/03-quote-service/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
 A simple Spring Boot REST API that serves quotes. This service is the backend for the [03-consuming-rest](../03-spring-consuming-rest) tutorial.
 
@@ -80,6 +80,25 @@ curl http://localhost:8080/api/1
 ```
 
 Tests cover all three endpoints and verify correct JSON responses.
+
+## API Contract
+
+This service provides quotes in a specific JSON format that the [03-consuming-rest](../03-spring-consuming-rest) consumer expects.
+
+### Response Format
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `type` | string | `"success"` for valid responses, `"failure"` for 404 |
+| `value` | object | Contains `id` (int) and `quote` (string) |
+
+### Status Codes
+
+| Endpoint | Success | Not Found |
+|----------|---------|-----------|
+| `GET /api/` | 200 (array of quotes) | N/A |
+| `GET /api/random` | 200 (single quote) | N/A |
+| `GET /api/{id}` | 200 (single quote) | 404 (`type: "failure"`) |
 
 ## Related
 

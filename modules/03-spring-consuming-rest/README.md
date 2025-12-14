@@ -1,8 +1,8 @@
 # Consuming a RESTful Web Service
 
-[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/03-spring-consuming-rest/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
-[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/03-spring-consuming-rest/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
-[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/03-spring-consuming-rest/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/03-spring-consuming-rest/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/03-spring-consuming-rest/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
+[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/03-spring-consuming-rest/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
 A Spring Boot application that consumes the [quote-service](../03-quote-service) REST API.
 
@@ -131,6 +131,32 @@ curl http://localhost:8081/quote
 | [ADR-0004](docs/adr/ADR-0004-expose-quote-endpoint.md) | Why a REST endpoint instead of ApplicationRunner   |
 | [ADR-0005](docs/adr/ADR-0005-error-handling-fallback.md) | Why graceful error handling with fallback        |
 | [ADR-0006](docs/adr/ADR-0006-externalize-base-url.md)  | Why externalize the quote-service URL              |
+
+## API Contract
+
+This consumer expects responses from [03-quote-service](../03-quote-service) in the following format:
+
+### Expected Response
+
+```json
+{
+  "type": "success",
+  "value": { "id": 1, "quote": "..." }
+}
+```
+
+### Fallback Behavior
+
+When the quote-service is unavailable, this consumer returns a fallback response:
+
+```json
+{
+  "type": "error",
+  "value": { "id": 0, "quote": "Quote service unavailable" }
+}
+```
+
+See [ADR-0005](docs/adr/ADR-0005-error-handling-fallback.md) for the design rationale.
 
 ## Related
 

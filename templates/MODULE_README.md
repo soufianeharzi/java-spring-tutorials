@@ -1,8 +1,8 @@
 # {Module Title}
 
-[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/{module-folder}/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
-[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/{module-folder}/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
-[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/badges/{module-folder}/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/{module-folder}/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/{module-folder}/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
+[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/{module-folder}/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
 > Part of the [`java-tutorials-spring`](../) collection of Spring.io guide implementations.
 

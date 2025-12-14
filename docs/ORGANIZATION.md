@@ -302,40 +302,47 @@ Execution Order (5 Staged Commits for Easy Review/Rollback)
 
 Commit 1: git mv moves (preserve history)
 
-- [x] mkdir -p modules ci/scripts ci/badges templates
-- [x] git mv 01-spring-hello-rest modules/
-- [x] git mv 02-spring-scheduling-tasks modules/
-- [x] git mv 03-quote-service modules/
-- [x] git mv 03-spring-consuming-rest modules/
-- [x] git mv badges/* ci/badges/
-- [x] git mv scripts/* ci/scripts/
-- [x] git mv docs/templates/* templates/
-- [x] Remove empty dirs (badges, scripts, docs/templates removed automatically by git)
-- [x] Run ./mvnw clean verify - BUILD SUCCESS (18 tests passed)
-- [x] Commit: "chore: move modules to modules/, badges/scripts to ci/, templates to root" (a634be4)
+mkdir -p modules ci/scripts ci/badges templates
+git mv 01-spring-hello-rest modules/
+git mv 02-spring-scheduling-tasks modules/
+git mv 03-quote-service modules/
+git mv 03-spring-consuming-rest modules/
+git mv badges/* ci/badges/
+git mv scripts/* ci/scripts/
+git mv docs/templates/* templates/
+# Remove empty dirs (check for hidden files first, e.g. .DS_Store)
+ls -la badges scripts docs/templates  # verify empty
+rm -rf badges scripts docs/templates  # or rmdir if clean
+- Run ./mvnw clean verify to catch immediate breaks
+- Commit: "chore: move modules to modules/, badges/scripts to ci/, templates to root"
 
 Commit 2: Fix build & CI paths
 
-- [x] 1. Update parent pom.xml module paths to modules/01-... (done in Commit 1)
-- [x] 2. Update module POMs: Checkstyle configLocation from ../checkstyle.xml → ../../checkstyle.xml
-- [x] 3. Scan module POMs for other ../ paths - only checkstyle needed updating
-- [x] 4. Update .github/workflows/java-ci.yml (PITest -pl, scripts path, badges path)
-- [x] 5. Update ci/scripts/ci_metrics_summary.py (ROOT, MODULES, badge paths)
-- [x] Run ./mvnw clean verify - BUILD SUCCESS (15 tests passed)
-- [x] Commit: "fix: update pom, CI workflow, and metrics script paths for new structure" (05672df)
+1. Update parent pom.xml module paths to modules/01-...
+2. Update module POMs: Checkstyle configLocation from ../checkstyle.xml →
+   ../../checkstyle.xml
+3. Scan module POMs for other ../ paths that need updating (now one level deeper)
+   rg "\\.\\./[^/]" modules/*/pom.xml  # find relative parent refs
+4. Update .github/workflows/java-ci.yml (targets, artifacts, PITest -pl)
+5. Update ci/scripts/ci_metrics_summary.py (ROOT, MODULES, badge paths)
+- Run ./mvnw clean verify again
+- Commit: "fix: update pom, CI workflow, and metrics script paths for new structure"
 
 Commit 3: Fix doc links + API contracts + ADR index
 
-- [x] 6. Update README.md badge URLs to ci/badges/...
-- [x] 7. Update module README badge URLs
-- [x] 8. Update docs/INDEX.md module paths to modules/
-- [x] 9. Update templates path references
-- [x] 10. Update ADR-0001-ci-badges.md badge paths
-- [x] 11. ADR paths in modules still work (relative paths within modules/)
-- [x] 12. Create docs/adr/README.md (ADR index + explains module-specific ADRs)
-- [x] 13. Add "API Contract" section to modules/03-quote-service/README.md
-- [x] 14. Add "API Contract" section to modules/03-spring-consuming-rest/README.md
-- [ ] Commit: "docs: fix links, add API contract sections, add ADR index"
+6. Update README.md badge URLs to ci/badges/... (both relative and raw GitHub URLs)
+7. Update any Shields.io endpoint URLs that reference old badges/ path
+   rg "badges/" README.md docs/  # find all badge references
+8. Simplify docs/INDEX.md to navigation-only (update module paths)
+9. Run rg "docs/templates" and fix any straggler references to new templates/
+10. Update cross-module references in module docs
+11. Verify ADR-0003/0004 paths still work after move
+12. Create docs/adr/README.md (ADR index + note: numbering starts at 0003)
+13. Add "API Contract" section to modules/03-quote-service/README.md (minimal: payload +
+    status codes)
+14. Add "API Contract" section to modules/03-spring-consuming-rest/README.md (minimal:
+    expected payload + fallback)
+- Commit: "docs: fix links, add API contract sections, add ADR index"
 
 Commit 4: Add new essential files
 
@@ -461,3 +468,4 @@ Previous Sources
   thub/
 - https://github.com/spring-guides/gs-multi-module
 - https://maven.apache.org/guides/introduction/introduction-to-archetypes.html
+å
