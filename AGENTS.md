@@ -186,6 +186,7 @@ lychee '**/*.md'
 | Checkstyle | `checkstyle.xml` |
 | Link Checker Config | `.lychee.toml` |
 | Badge Generator | `ci/scripts/ci_metrics_summary.py` |
+| Changelog | `CHANGELOG.md` |
 | ADR Index | `docs/adr/README.md` |
 | Quick Start | `docs/QUICK_START.md` |
 
