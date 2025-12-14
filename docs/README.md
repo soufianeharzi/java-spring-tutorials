@@ -32,7 +32,7 @@ Each module has its own documentation in `modules/{module}/docs/`:
 | 02-spring-scheduling-tasks | [README](../modules/02-spring-scheduling-tasks/README.md) | @Scheduled, Awaitility testing |
 | 03-quote-service | [README](../modules/03-quote-service/README.md) | Quote API, ThreadLocalRandom |
 | 03-spring-consuming-rest | [README](../modules/03-spring-consuming-rest/README.md) | RestClient, error handling |
-| 04-spring-relational-data-access | [README](../modules/04-spring-relational-data-access/README.md) | JdbcTemplate, H2, CommandLineRunner |
+| 04-spring-relational-data-access | [README](../modules/04-spring-relational-data-access/README.md) | JdbcTemplate, relational data (placeholder) |
 
 ## Templates
 

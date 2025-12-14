@@ -6,15 +6,17 @@ Generated: December 2025
 
 ```
 java-spring-tutorials/
-├── 01-spring-hello-rest/        # Basic REST endpoint
-├── 02-spring-scheduling-tasks/  # Scheduled task execution
-├── 03-quote-service/            # Backend quote API (provider)
-└── 03-spring-consuming-rest/    # REST client (consumer)
+├── modules/
+│   ├── 01-spring-hello-rest/        # Basic REST endpoint
+│   ├── 02-spring-scheduling-tasks/  # Scheduled task execution
+│   ├── 03-quote-service/            # Backend quote API (provider)
+│   ├── 03-spring-consuming-rest/    # REST client (consumer)
+│   └── 04-spring-relational-data-access/  # JDBC with JdbcTemplate
 ```
 
 **Total Documentation:** ~3,000+ lines across all modules
 **Technology Stack:** Spring Boot 4.0.0, Java 17
-**Status:** 4 modules implemented, following official Spring.io guides
+**Status:** 5 modules implemented, following official Spring.io guides
 
 ---
 
@@ -140,7 +142,7 @@ java-spring-tutorials/
 - [x] Create ADR-0007 (CI stack decision)
 
 ### Phase C (Later)
-- [ ] Add CHANGELOG.md
+- [x] Add CHANGELOG.md
 - [ ] Add requirements/ documentation
 - [x] Add agents.md
 

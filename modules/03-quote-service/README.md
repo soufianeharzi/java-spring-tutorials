@@ -27,6 +27,8 @@ A simple Spring Boot REST API that serves quotes. This service is the backend fo
     │   └── spring-initializr.md         # Project setup from start.spring.io
     ├── concepts/
     │   └── quote-controller.md          # Explains the controller and Java Streams
+    ├── reference/
+    │   └── guide.md                     # Spring guide reference
     └── adr/
         ├── ADR-0001-split-provider-consumer.md  # Why separate modules
         ├── ADR-0002-rest-api-shape.md           # API design decisions

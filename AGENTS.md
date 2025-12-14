@@ -41,7 +41,7 @@ Before making changes, read these in order:
 - Add `<module>modules/0N-name</module>` to parent `pom.xml`
 - Add to root `README.md` contents table
 - Add to `docs/README.md` and `docs/INDEX.md`
-- Add port to Module Ports table below (if applicable)
+- Add port to Module Ports table below (if applicable) and to `docs/QUICK_START.md`
 - After first successful CI build: add badge links to module README
 
 ## Adding Documentation

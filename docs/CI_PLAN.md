@@ -67,7 +67,7 @@ All commands run from the repository root using the aggregator POM:
 
 ### Run a single module
 ```bash
-./mvnw test -pl 01-spring-hello-rest
+./mvnw test -pl modules/01-spring-hello-rest
 ```
 
 ## Performance Notes

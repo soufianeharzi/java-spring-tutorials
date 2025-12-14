@@ -4,7 +4,7 @@
 [![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/{module-folder}/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
 [![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/{module-folder}/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
-> Part of the [`java-tutorials-spring`](../) collection of Spring.io guide implementations.
+> Part of the [`java-tutorials-spring`](../../) collection of Spring.io guide implementations.
 
 {One-paragraph description of what this module does and what Spring concepts it demonstrates.}
 
