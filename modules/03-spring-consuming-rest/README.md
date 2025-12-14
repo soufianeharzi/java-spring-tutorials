@@ -4,7 +4,7 @@
 [![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/03-spring-consuming-rest/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
 [![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/03-spring-consuming-rest/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
 
-A Spring Boot application that consumes the [quote-service](../03-quote-service) REST API.
+A Spring Boot application that consumes the [quote-service](../modules/03-quote-service) REST API.
 
 Based on [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest/).
 
@@ -62,7 +62,7 @@ sequenceDiagram
 **Step 1:** Start the quote-service first (in a separate terminal):
 
 ```bash
-cd ../03-quote-service
+cd ../modules/03-quote-service
 ./mvnw spring-boot:run
 ```
 
@@ -134,7 +134,7 @@ curl http://localhost:8081/quote
 
 ## API Contract
 
-This consumer expects responses from [03-quote-service](../03-quote-service) in the following format:
+This consumer expects responses from [03-quote-service](../modules/03-quote-service) in the following format:
 
 ### Expected Response
 
@@ -160,6 +160,6 @@ See [ADR-0005](docs/adr/ADR-0005-error-handling-fallback.md) for the design rati
 
 ## Related
 
-- [03-quote-service](../03-quote-service) - The backend this consumer calls
+- [03-quote-service](../modules/03-quote-service) - The backend this consumer calls
 - [Spring Guide: Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest/)
 - [Spring Docs: REST Clients](https://docs.spring.io/spring-boot/reference/io/rest-client.html)
