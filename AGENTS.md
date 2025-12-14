@@ -5,7 +5,9 @@ AI guidance for working with this repository.
 ## Project Overview
 
 **Stack:** Spring Boot 4.0.0, Java 17, Maven
+
 **Structure:** Multi-module monorepo with 5 tutorial modules
+
 **Purpose:** Hands-on implementations of official Spring Guides with detailed documentation
 
 ## Read First
