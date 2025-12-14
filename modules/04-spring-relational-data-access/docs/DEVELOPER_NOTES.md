@@ -153,9 +153,9 @@ A: {Answer you discovered}
 
 - [x] Complete Phase 1 implementation
 - [x] Run `./mvnw clean verify`
-- [ ] Commit Phase 1
+- [x] Commit Phase 1
 - [ ] Add PostgreSQL dependency
-- [ ] Update CI workflow
+- [x] Update CI workflow
 - [ ] Write ADR-0001 for Postgres switch
 
 ---
