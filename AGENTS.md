@@ -8,24 +8,46 @@ AI guidance for working with this repository.
 **Structure:** Multi-module monorepo with 4 tutorial modules
 **Purpose:** Hands-on implementations of official Spring Guides with detailed documentation
 
-## Repository Structure
+## Read First
 
-```
-java-spring-tutorials/
-├── modules/                    # All tutorial modules
-│   ├── 01-spring-hello-rest/   # REST API basics
-│   ├── 02-spring-scheduling-tasks/  # @Scheduled tasks
-│   ├── 03-quote-service/       # Quote provider API
-│   └── 03-spring-consuming-rest/    # REST client consumer
-├── docs/                       # Repository-level docs
-│   ├── adr/                    # Architecture Decision Records
-│   └── INDEX.md                # Master file index
-├── templates/                  # Module scaffolding templates
-├── ci/                         # CI scripts and badges
-│   ├── scripts/
-│   └── badges/
-└── .github/workflows/          # GitHub Actions
-```
+Before making changes, read these in order:
+1. This file (AGENTS.md)
+2. [docs/README.md](docs/README.md) - Documentation hub
+3. [docs/adr/README.md](docs/adr/README.md) - ADR index and numbering
+4. Target module's README and ADRs (especially for 03 modules)
+5. [templates/](templates/) - Use these for new files
+
+## Adding a New Module
+
+1. **Create from template**: Copy structure from an existing module or use `templates/`
+2. **Required structure**:
+   ```
+   modules/XX-module-name/
+   ├── pom.xml                    # Child POM (see POM guidance below)
+   ├── README.md                  # Use templates/MODULE_README.md
+   ├── .gitattributes             # Copy from existing module
+   ├── src/main/resources/
+   │   └── application.properties # Set server.port if not 8080
+   └── docs/
+       ├── setup/
+       │   ├── spring-initializr.md
+       │   └── run-instructions.md
+       ├── concepts/              # At least one concept doc
+       ├── reference/
+       │   └── guide.md           # Link to Spring guide
+       └── images/
+   ```
+3. **Register module**: Add to parent `pom.xml` `<modules>` section
+4. **Badges**: Added automatically by CI after first successful build on main
+5. **Update docs**: Add to `docs/INDEX.md` and root `README.md` contents table
+6. **Update Module Ports table**: Add entry to the table below if module uses a port
+
+## Adding Documentation
+
+- **Concept docs**: Use `templates/CONCEPT.md`, place in `docs/concepts/`
+- **Images**: Place in `docs/images/`, name descriptively (e.g., `feature-output.png`), use relative links
+- **Update links**: Add to module README, `docs/README.md`, and `docs/INDEX.md`
+- **API changes in 03 modules**: Update the "API Contract" section in both provider and consumer READMEs
 
 ## Commands
 
@@ -34,10 +56,10 @@ java-spring-tutorials/
 ./mvnw clean verify
 
 # Run a specific module
-./mvnw spring-boot:run -pl modules/01-spring-hello-rest
+./mvnw spring-boot:run -pl modules/{module-name}
 
 # Run tests for a specific module
-./mvnw test -pl modules/03-quote-service
+./mvnw test -pl modules/{module-name}
 
 # Run checkstyle
 ./mvnw checkstyle:check
@@ -53,33 +75,60 @@ java-spring-tutorials/
 - Module 02 uses Awaitility for async scheduler testing
 - Module 03 uses MockMvc and mocked RestClient for isolation
 
-## Code Style
+## ADR Process
 
-- Checkstyle config: `checkstyle.xml` at root
-- Module POMs reference: `../../checkstyle.xml`
-- SpotBugs runs on all modules
-- PITest mutation testing on 03 modules
+**When to write an ADR:**
+- Architecture changes, new patterns, or significant design decisions
+- CI/CD configuration changes
+- New shared dependencies
+- Deviations from Spring guide implementations
 
-## Git Workflow
+**Numbering:**
+- Repository-level ADRs: `docs/adr/ADR-XXXX-title.md` (sequential from 0001)
+- Module-specific ADRs: `modules/{module}/docs/adr/ADR-XXXX-title.md` (sequential per module)
+- Note: `03-spring-consuming-rest` starts at ADR-0003 (inherited from development); do not add placeholder ADRs
 
-- Main branch: `main`
-- CI runs on push to `main`, `develop`, `tutorial-*` branches
-- PRs to `main` trigger CI
-- Badges auto-update on main branch pushes
+**Process:**
+1. Use `templates/ADR_TEMPLATE.md`
+2. Place in appropriate `docs/adr/` folder
+3. Update `docs/adr/README.md` index (for repo-level) or module README ADR table
 
-## Documentation
+## Parent/Child POM
 
-Each module has:
-- `README.md` - Overview and quick start
-- `docs/setup/` - Spring Initializr and run instructions
-- `docs/concepts/` - Technical explanations
-- `docs/reference/` - Original Spring guide link
-- `docs/adr/` - Module-specific ADRs (03 modules only)
+- **Parent POM** (`pom.xml`): Manages all dependency and plugin versions via `<dependencyManagement>` and `<pluginManagement>`
+- **Child POMs**: Inherit versions from parent; do NOT specify versions in child POMs
+- **Checkstyle path**: Child POMs use `<configLocation>../../checkstyle.xml</configLocation>`
+- **Adding a module**: Add `<module>modules/XX-name</module>` to parent's `<modules>` section
 
-Templates in `templates/`:
-- `MODULE_README.md` - New module README template
-- `ADR_TEMPLATE.md` - Architecture Decision Record template
-- `CONCEPT.md` - Technical explanation template
+## CI/CD and Badges
+
+**GitHub Actions** (`.github/workflows/java-ci.yml`):
+- `build-test`: Runs on all pushes/PRs - tests, JaCoCo, Checkstyle, SpotBugs
+- `link-check`: Validates markdown links (excludes shields.io, localhost)
+- `mutation-test`: PITest on 03 modules (main branch only)
+- `update-badges`: Generates badge JSON files (main branch only)
+- `security-check`: OWASP dependency scan (main branch only)
+
+**Badge generation:**
+- Script: `ci/scripts/ci_metrics_summary.py` parses XML reports
+- Output: `ci/badges/*.json` (aggregate) and `ci/badges/{module}/*.json`
+- Shields.io fetches JSON from raw.githubusercontent.com
+- Badges update automatically on successful main branch builds
+- **Do NOT edit badge JSON files manually** - they are overwritten by CI
+
+**Run link checker locally:**
+```bash
+# Install lychee: brew install lychee (macOS) or cargo install lychee
+lychee '**/*.md' --exclude 'img.shields.io' --exclude 'localhost'
+```
+
+## Consistency Rules
+
+- **Formatting**: Follow `.editorconfig` (spaces for Java/MD, tabs for XML)
+- **Line endings**: LF for all files except `*.cmd` (CRLF)
+- **Markdown**: Use fenced code blocks with language, tables for structured data
+- **Images**: PNG preferred, descriptive names, store in `docs/images/`
+- **No module-level AGENTS.md**: Single root file only
 
 ## Boundaries
 
