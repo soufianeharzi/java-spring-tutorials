@@ -13,7 +13,7 @@ Following the official [Spring Guide](https://spring.io/guides/gs/relational-dat
 | Section                                                                                  | File                                                                                                   | Description                     |
 |------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|---------------------------------|
 | [Customer.java](#customerjava)                                                           | [Source](../src/main/java/com/example/relationaldataaccess/Customer.java)                              | Domain model for customer data  |
-| [SpringRelationalDataAccessApplication.java](#springrelationaldataaccessapplicationjava) | [Source](../src/main/java/com/example/relationaldataaccess/SpringRelationalDataAccessApplication.java) | Main app with CommandLineRunner |
+| [RelationalDataAccessApplication.java](#relationaldataaccessapplicationjava) | [Source](../src/main/java/com/example/relationaldataaccess/RelationalDataAccessApplication.java) | Main app with CommandLineRunner |
 
 ---
 
@@ -33,9 +33,9 @@ Following the official [Spring Guide](https://spring.io/guides/gs/relational-dat
 
 ---
 
-## SpringRelationalDataAccessApplication.java
+## RelationalDataAccessApplication.java
 
-**Path:** `src/main/java/com/example/relationaldataaccess/SpringRelationalDataAccessApplication.java`
+**Path:** `src/main/java/com/example/relationaldataaccess/RelationalDataAccessApplication.java`
 
 ### Purpose
 {Main application that demonstrates JdbcTemplate usage}
@@ -151,8 +151,8 @@ A: {Answer you discovered}
 
 # TODOs
 
-- [ ] Complete Phase 1 implementation
-- [ ] Run `./mvnw clean verify`
+- [x] Complete Phase 1 implementation
+- [x] Run `./mvnw clean verify`
 - [ ] Commit Phase 1
 - [ ] Add PostgreSQL dependency
 - [ ] Update CI workflow

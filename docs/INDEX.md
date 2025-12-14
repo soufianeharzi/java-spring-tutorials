@@ -262,19 +262,28 @@ REST client consuming the quote-service using `RestClient`.
 
 ## 04-spring-relational-data-access
 
-Scaffold placeholder for the Spring JDBC relational data guide. Code not yet implemented.
+Console application demonstrating Spring JdbcTemplate with H2 in-memory database.
 
 **Spring Guide:** [Accessing Relational Data using JDBC with Spring](https://spring.io/guides/gs/relational-data-access/)
 
-### Documentation (scaffold)
+### Source Files
 
 | File | Description |
 |------|-------------|
-| [README.md](../modules/04-spring-relational-data-access/README.md) | Module overview (placeholder) |
-| [spring-initializr.md](../modules/04-spring-relational-data-access/docs/setup/spring-initializr.md) | Planned Initializr settings |
-| [run-instructions.md](../modules/04-spring-relational-data-access/docs/setup/run-instructions.md) | Planned run steps |
-| [jdbc-template.md](../modules/04-spring-relational-data-access/docs/concepts/jdbc-template.md) | Planned JdbcTemplate notes |
-| [guide.md](../modules/04-spring-relational-data-access/docs/reference/guide.md) | Spring guide link |
+| [RelationalDataAccessApplication.java](../modules/04-spring-relational-data-access/src/main/java/com/example/relationaldataaccess/RelationalDataAccessApplication.java) | Main app with CommandLineRunner |
+| [Customer.java](../modules/04-spring-relational-data-access/src/main/java/com/example/relationaldataaccess/Customer.java) | Customer record (domain model) |
+
+### Documentation
+
+| File | Description |
+|------|-------------|
+| [README.md](../modules/04-spring-relational-data-access/README.md) | Module overview |
+| [DEVELOPER_NOTES.md](../modules/04-spring-relational-data-access/docs/DEVELOPER_NOTES.md) | Developer notes (Phase 1 & 2) |
+| [spring-initializr.md](../modules/04-spring-relational-data-access/docs/setup/spring-initializr.md) | Spring Initializr settings |
+| [run-instructions.md](../modules/04-spring-relational-data-access/docs/setup/run-instructions.md) | How to run the app |
+| [jdbc-template.md](../modules/04-spring-relational-data-access/docs/concepts/jdbc-template.md) | JdbcTemplate explained |
+| [customer.md](../modules/04-spring-relational-data-access/docs/concepts/customer.md) | Customer record explained |
+| [guide.md](../modules/04-spring-relational-data-access/docs/reference/guide.md) | Spring guide reference |
 
 ---
 
