@@ -33,11 +33,7 @@ jobs:
           languages: java
 
       - name: Build with Maven
-        run: |
-          cd 01-spring-hello-rest && ./mvnw -B -ntp compile -DskipTests && cd ..
-          cd 02-spring-scheduling-tasks && ./mvnw -B -ntp compile -DskipTests && cd ..
-          cd 03-quote-service && ./mvnw -B -ntp compile -DskipTests && cd ..
-          cd 03-spring-consuming-rest && ./mvnw -B -ntp compile -DskipTests && cd ..
+        run: ./mvnw -B -ntp compile -DskipTests
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
