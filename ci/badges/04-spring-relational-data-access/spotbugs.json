@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "label": "coverage",
-  "message": "92.6%",
+  "label": "spotbugs",
+  "message": "clean",
   "color": "16A34A"
 }

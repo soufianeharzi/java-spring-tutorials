@@ -48,7 +48,8 @@ def load_jacoco_for_module(module: str) -> dict | None:
         return None
     try:
         tree = ET.parse(report)
-        for counter in tree.getroot().iter("counter"):
+        # Get the LINE counter from the report root level (direct child of <report>)
+        for counter in tree.getroot().findall("counter"):
             if counter.attrib.get("type") == "LINE":
                 covered = int(counter.attrib.get("covered", 0))
                 missed = int(counter.attrib.get("missed", 0))
@@ -184,7 +185,9 @@ def write_module_badge(
     spotbugs: int | None,
 ) -> None:
     """Write Shields.io endpoint badge JSON files for a specific module."""
-    module_badge_dir = BADGES_DIR / module
+    # Strip "modules/" prefix to match badge directory convention
+    module_name = module.replace("modules/", "")
+    module_badge_dir = BADGES_DIR / module_name
     module_badge_dir.mkdir(parents=True, exist_ok=True)
 
     # Coverage badge
