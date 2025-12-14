@@ -19,8 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Updated ci/scripts/ci_metrics_summary.py to include module 04
 - Fixed CI workflow duplicate link check output
 - Fixed module 04 pom.xml to use repo's checkstyle.xml
+- Fixed root README.md module path
 
 ### Removed
+- Mermaid "learning path" diagram from root README (doesn't scale with growing modules)
 - `docs/ORGANIZATION.md` - Stale planning document
 - `modules/03-spring-consuming-rest/organization.md` - Duplicate file
 
