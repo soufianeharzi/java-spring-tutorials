@@ -1,5 +1,6 @@
 package com.example.relationaldataaccess;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -20,6 +21,9 @@ public class RelationalDataAccessApplication implements CommandLineRunner {
 		SpringApplication.run(RelationalDataAccessApplication.class, args);
 	}
 
+	@SuppressFBWarnings(
+			value = "EI_EXPOSE_REP2",
+			justification = "Spring injects shared JdbcTemplate bean; field is private final and not exposed")
 	private final JdbcTemplate jdbcTemplate;
 
 	public RelationalDataAccessApplication(JdbcTemplate jdbcTemplate) {
