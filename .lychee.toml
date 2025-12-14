@@ -7,8 +7,8 @@ exclude = [
     "img.shields.io",
 
     # Local development
-    "^http://localhost",
-    "^http://127\\.0\\.0\\.1",
+    "^http://localhost(:[0-9]+)?",
+    "^http://127\\.0\\.0\\.1(:[0-9]+)?",
 
     # Placeholder URLs in templates (not meant to be valid)
     "https://docs.spring.io/\\.\\.\\.",
@@ -22,7 +22,9 @@ exclude = [
 
 # Exclude paths (templates have placeholder links by design)
 exclude_path = [
-    "**/templates/**",
+    "templates",
+    "templates/*",
+    "templates/**",
 ]
 
 # Accept these status codes as valid
