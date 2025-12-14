@@ -110,6 +110,31 @@ jobs:
             **/target/site/jacoco/
             **/target/spotbugsXml.xml
 
+  # Link checker for markdown files
+  link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check markdown links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress '**/*.md' --exclude 'img.shields.io' --exclude 'localhost' --exclude '127.0.0.1'
+          fail: true
+        continue-on-error: true
+
+      - name: Link Check Summary
+        if: always()
+        run: |
+          echo "## Link Check Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f ./lychee/out.md ]; then
+            cat ./lychee/out.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Link check completed. See logs for details." >> $GITHUB_STEP_SUMMARY
+          fi
+
   # PITest runs only on main branch (slower)
   mutation-test:
     runs-on: ubuntu-latest

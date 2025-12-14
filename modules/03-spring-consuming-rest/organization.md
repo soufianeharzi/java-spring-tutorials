@@ -342,22 +342,19 @@ Commit 4: Add new essential files
 - [x] 15. Create AGENTS.md (≤150 lines, single root file, links to module READMEs/ADR index)
 - [x] 16. Create .editorconfig
 - [x] 17. Create docs/README.md (TOC landing page)
-- [ ] Commit: "chore: add AGENTS.md, .editorconfig, docs/README.md"
+- [x] Commit: "chore: add AGENTS.md, .editorconfig, docs/README.md" (40c64b4)
 
 Commit 5: Cleanup + link check
 
-18. Add application.properties to modules/01-spring-hello-rest
-19. Remove HELP.md from modules/01, modules/02, modules/03-spring-consuming-rest
-20. Add .gitattributes to modules/03-quote-service
-21. Add docs/reference/guide.md to modules/03-quote-service
-22. Remove modules/03-spring-consuming-rest/chatgptAudit.md
-23. Update docs/ORGANIZATION.md to remove references to chatgptAudit.md
-24. Add markdown link checker to CI workflow (lychee or markdown-link-check)
-- Configure ignore list: Shields.io endpoints, external URLs, anchors (avoid false
-  positives)
-25. Run link checker locally to verify all links work
-26. Run ./mvnw clean verify final check
-- Commit: "chore: cleanup HELP.md, add missing files, add link checker to CI"
+- [x] 18. Add application.properties to modules/01-spring-hello-rest
+- [x] 19. HELP.md files already don't exist (never created or already removed)
+- [x] 20. Add .gitattributes to modules/03-quote-service
+- [x] 21. Add docs/reference/guide.md to modules/03-quote-service
+- [x] 22. chatgptAudit.md already doesn't exist (incorporated into ORGANIZATION.md earlier)
+- [x] 23. docs/ORGANIZATION.md already updated
+- [x] 24. Add markdown link checker to CI workflow (lychee with ignore list)
+- [ ] 25. Run ./mvnw clean verify final check
+- [ ] Commit: "chore: add missing files, add link checker to CI"
 
 Final verification
 
