@@ -1,0 +1,56 @@
+version: '1.0'
+repo:
+  owner: jguida941
+  name: java-spring-tutorials
+  language: java
+  default_branch: main
+  dispatch_workflow: hub-ci.yml
+java:
+  version: '21'
+  distribution: temurin
+  build_tool: maven
+  tools:
+    jacoco:
+      enabled: true
+      min_coverage: 70
+    checkstyle:
+      enabled: true
+      fail_on_violation: true
+    spotbugs:
+      enabled: true
+      fail_on_error: true
+    pmd:
+      enabled: true
+      fail_on_violation: false
+    owasp:
+      enabled: true
+      fail_on_cvss: 7
+    pitest:
+      enabled: true
+      min_mutation_score: 70
+    semgrep:
+      enabled: false
+    trivy:
+      enabled: false
+      fail_on_critical: false
+      fail_on_high: false
+    codeql:
+      enabled: true
+    docker:
+      enabled: false
+      compose_file: docker-compose.yml
+      health_endpoint: /actuator/health
+reports:
+  retention_days: 30
+  badges:
+    enabled: true
+    branch: main
+  codecov:
+    enabled: true
+    fail_ci_on_error: false
+thresholds:
+  coverage_min: 70
+  mutation_score_min: 70
+  max_critical_vulns: 0
+  max_high_vulns: 0
+language: java
